@@ -38,7 +38,9 @@ const SHORT_LINK_REDIRECTS: { source: string; destination: string }[] = [
   // Stale URLs Google Search Console still crawls from the pre-migration Angular build.
   { source: '/assets/images/favicon/favicon.ico', destination: '/favicon.ico' },
   { source: '/contact.html', destination: '/contact' },
-  { source: '/blog.html', destination: '/blog' }
+  { source: '/blog.html', destination: '/blog' },
+  // Old category URL keys replaced by SEO-friendly slugs.
+  { source: '/product/list/coupe', destination: '/product/list/rent-coupe-cars-dubai' }
 ]
 
 /** LAN / device IPs for dev (HMR WebSocket). Add yours if it changes. */

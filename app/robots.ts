@@ -13,6 +13,7 @@ export default function robots(): MetadataRoute.Robots {
           '/account/',
           '/auth/',
           '/api/',
+          '/assets/images/favicon/manifest.json',
         ],
       },
     ],

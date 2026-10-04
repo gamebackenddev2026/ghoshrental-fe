@@ -58,11 +58,14 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
       'Explore our luxury yacht fleet in Dubai. Private yacht charter, hourly and daily rentals with Ghost Rentals.'
   }
 
+  const hasQueryParams = !!(type || chauffeur || first(sp.category))
+
   return buildPageMetadata({
     title: getFleetSearchPageTitle(),
     description,
     path: '/product/search',
-    keywords: cms?.meta_keywords
+    keywords: cms?.meta_keywords,
+    noIndex: hasQueryParams || undefined,
   })
 }
 

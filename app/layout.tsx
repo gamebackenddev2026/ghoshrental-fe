@@ -18,6 +18,9 @@ import { googleTranslateDir, googleTranslateLangCode, parseGoogleTranslateLang }
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteOrigin()),
+  alternates: {
+    canonical: '/',
+  },
   title: {
     default: `${SITE_NAME} Dubai — Luxury Car & Yacht Rental`,
     template: `%s | ${SITE_NAME}`

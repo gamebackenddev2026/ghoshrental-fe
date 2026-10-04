@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { notFound } from "next/navigation"
 import { ProductDetailPage } from "@/components/product/ProductDetailPage"
 import { ProductDetailPreload } from "@/components/product/ProductDetailPreload"
 import { JsonLd } from "@/components/seo/JsonLd"
@@ -50,6 +51,8 @@ export default async function ProductRentPage({ params }: RouteProps) {
   const { url_key } = await params
   const authToken = await getServerAuthToken()
   const data = await loadProductPageData(url_key, "rent", authToken)
+
+  if (!data.product) notFound()
 
   return (
     <>
