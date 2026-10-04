@@ -197,19 +197,35 @@ export function isUsableBrandMediaUrl(value: string): boolean {
   }
 }
 
+/** Brand / cartype uploads on Ghost Rentals S3. */
+const BRAND_S3_IMAGE_BASE = 'https://ghostrentals-media.s3.ap-south-1.amazonaws.com/brand/'
+const CARTYPE_S3_IMAGE_BASE = 'https://ghostrentals-media.s3.ap-south-1.amazonaws.com/cartype/'
+
+function resolveRelativeBrandMediaFilename(filename: string): string {
+  const file = filename.trim().replace(/^\/+/, '')
+  if (!file) return ''
+  if (!/\.(webp|jpe?g|png|gif|avif|svg)(\?.*)?$/i.test(file)) return ''
+  return `${BRAND_S3_IMAGE_BASE}${file}`
+}
+
 /** Brand / cartype logo URL from API fields (`s3_url`, `src_url`, `url`, or absolute `src`). */
 export function resolveBrandMediaUrl(input: RawMedia | string | null | undefined): string {
   if (input == null) return ''
 
   if (typeof input === 'string') {
     const trimmed = input.trim()
-    return isUsableBrandMediaUrl(trimmed) ? trimmed : ''
+    if (isUsableBrandMediaUrl(trimmed)) return trimmed
+    return resolveRelativeBrandMediaFilename(trimmed)
   }
 
   for (const candidate of [input.s3_url, input.src_url, input.url, input.src]) {
     const trimmed = candidate?.trim()
     if (!trimmed) continue
     if (isUsableBrandMediaUrl(trimmed)) return trimmed
+    if (!isAbsoluteMediaUrl(trimmed)) {
+      const resolved = resolveRelativeBrandMediaFilename(trimmed)
+      if (resolved) return resolved
+    }
   }
 
   return ''
@@ -292,5 +308,7 @@ export function resolvePublicMediaUrl(folder: PublicMediaFolder, value: string):
   if (folder === 'media' || folder === 'feature') return ''
 
   const file = trimmed.replace(/^\/+/, '')
+  if (folder === 'brand') return `${BRAND_S3_IMAGE_BASE}${file}`
+  if (folder === 'cartype') return `${CARTYPE_S3_IMAGE_BASE}${file}`
   return `/public/${folder}/${file}`
 }

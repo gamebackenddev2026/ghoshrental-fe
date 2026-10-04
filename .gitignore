@@ -50,5 +50,6 @@ next-env.d.ts
 /public/src_app_*.map
 
 # CMS media & banner served via API rewrite (next.config.ts: /public/* → upstream)
-/public/public/
+/public/public/media/
+/public/public/banner/
 /public/assets/banner/
