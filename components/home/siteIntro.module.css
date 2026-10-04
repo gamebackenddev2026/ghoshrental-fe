@@ -1,0 +1,181 @@
+/* Initial black loader — matches Angular .loader-overlay */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+
+.loaderFadeOut {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loaderContent {
+  display: flex;
+  justify-content: center;
+}
+
+.loaderContent img {
+  width: 15vw;
+  height: auto;
+}
+
+@media (max-width: 991px) {
+  .loaderContent img {
+    width: 50%;
+    max-width: 160px;
+  }
+}
+
+/* Intro overlay — matches Angular .intro-overlay */
+.intro {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.44);
+  z-index: 10001;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.introFadeOut {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.posterWrap {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.posterWrap,
+.poster,
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.video {
+  z-index: 10000;
+  background: #000;
+}
+
+.posterWrap,
+.poster {
+  z-index: 10001;
+}
+
+/* Footer tagline — visible on poster; fades out when video plays */
+.introFooter {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 24px 24px 28px;
+  text-align: center;
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.85s ease,
+    visibility 0.85s ease;
+}
+
+.introFooterFadeOut {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .introFooter {
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+  }
+}
+
+.introFooterLead {
+  margin-bottom: 12px;
+}
+
+.introFooterServices {
+  white-space: nowrap;
+}
+
+.introFooter p {
+  margin: 0;
+  color: #fff;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: clamp(13px, 1.65vw, 20px);
+  font-weight: 600;
+  line-height: 1.75;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 2px 12px rgba(0, 0, 0, 0.65);
+}
+
+@media (max-width: 991px) {
+  .introFooter {
+    padding: 20px 16px 24px;
+  }
+
+  .introFooterLead {
+    margin-bottom: 10px;
+  }
+
+  .introFooter p {
+    font-size: clamp(11px, 3.2vw, 15px);
+    letter-spacing: 0.1em;
+    line-height: 1.65;
+  }
+
+  .introFooterServices {
+    font-size: clamp(8px, 2.35vw, 12px);
+    letter-spacing: 0.04em;
+  }
+}
+
+.desktopOnly {
+  display: block;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+}

@@ -1,0 +1,447 @@
+/* Combined pickup / return range picker — dual month + range + time row */
+
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.rootOpen {
+  z-index: 1001;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 4px 0 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 16px;
+  color: #0a0a0a;
+  min-height: 0;
+}
+
+.triggerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  flex: 1 1 0;
+  justify-content: center;
+}
+
+/* Match productSearch .pillLabel / .pillValue (filter pills) */
+.triggerKicker {
+  font-size: 14px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #242424;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.triggerValue {
+  font-size: 16px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #0a0a0a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.triggerValue[data-empty='true'] {
+  font-size: 15px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #454545;
+}
+
+.triggerArrowMid {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0.72;
+}
+
+.triggerArrowMid img {
+  width: 10px;
+  height: 10px;
+  display: block;
+}
+
+.triggerGo {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.triggerGoIcon {
+  width: 10px;
+  height: 10px;
+  display: block;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+.triggerGoIcon path {
+  stroke: #ffffff !important;
+  fill: none !important;
+}
+
+.dropdownRoot {
+  position: fixed;
+  z-index: 4000;
+  background: #fff;
+  border-radius: 4px;
+  padding: 18px 20px 16px;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.12),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  max-width: min(100vw - 16px, 640px);
+  overflow: visible;
+}
+
+.panelTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+/* Match productSearch .popoverKicker */
+.panelKicker {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+}
+
+.monthNavCluster {
+  display: flex;
+  gap: 8px;
+}
+
+.iconRound {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.iconRound:hover:not(:disabled) {
+  background: #f5f5f5;
+  border-color: #ccc;
+}
+
+.iconRound:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.dualMonth {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.dualMonth[data-single-month='true'] {
+  grid-template-columns: 1fr;
+}
+
+.monthBlock {
+  min-width: 0;
+}
+
+.monthTitle {
+  text-align: center;
+  font-size: 16px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.dayName {
+  font-size: 12px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  padding: 2px 0 6px;
+}
+
+.dayCell {
+  position: relative;
+  padding: 7px 0 10px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-size: 14px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #1a1a1a;
+  min-height: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.dayNum {
+  line-height: 1.2;
+}
+
+.dayCell.muted {
+  color: #c8c4be;
+}
+
+.dayCell.disabled {
+  color: #d4d0cc;
+  pointer-events: none;
+}
+
+.dayCell.rangeBetween {
+  border-radius: 4px;
+  background: #ececec;
+  color: #111;
+}
+
+.dayCell.rangeStart,
+.dayCell.rangeEnd,
+.dayCell.rangeSingle {
+  background: #0a0a0a;
+  color: #fff;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+}
+
+.dayCell.rangeStart {
+  border-radius: 999px 4px 4px 999px;
+}
+
+.dayCell.rangeEnd {
+  border-radius: 4px 999px 999px 4px;
+}
+
+.dayCell.rangeSingle {
+  border-radius: 999px;
+}
+
+.dayCell.today .dayNum {
+  position: relative;
+}
+
+.todayDot {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.dayCell.rangeStart .todayDot,
+.dayCell.rangeEnd .todayDot,
+.dayCell.rangeSingle .todayDot,
+.dayCell.rangeBetween .todayDot {
+  background: #4ade80;
+}
+
+.timeDivider {
+  height: 1px;
+  background: #e8e8e8;
+  margin: 16px 0 14px;
+}
+
+.timeRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  overflow: visible;
+}
+
+.timeCol {
+  min-width: 0;
+  overflow: visible;
+}
+
+/* Match filter pill label */
+.timeColLabel {
+  display: block;
+  font-size: 14px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #242424;
+  margin-bottom: 8px;
+}
+
+.timeSelects {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  overflow: visible;
+}
+
+.timeSelectWrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.timeSelectTrigger {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 28px 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #0a0a0a;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: left;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M3 4.5L6 8l3-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.timeSelectTrigger:focus {
+  outline: none;
+  border-color: #111;
+}
+
+.timeSelectTrigger:hover {
+  border-color: #ccc;
+}
+
+.timeSelectMenu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  max-height: 220px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+  scrollbar-width: thin;
+}
+
+.timeSelectOption {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 15px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.timeSelectOption:hover {
+  background: #f5f5f5;
+}
+
+.timeSelectOptionActive {
+  background: #0a0a0a;
+  color: #fff;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+}
+
+.timeSelectOptionActive:hover {
+  background: #222;
+}
+
+.panelError {
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #b45309;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #eee;
+}
+
+/* Match productSearch .popoverClear */
+.clearLink {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.clearLink:hover {
+  color: #000;
+}
+
+.applyBtn {
+  border: none;
+  background: #0a0a0a;
+  color: #fff;
+  border-radius: 4px;
+  padding: 11px 28px;
+  font-size: 15px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    transform 0.12s ease;
+}
+
+.applyBtn:hover {
+  background: #222;
+  transform: translateY(-1px);
+}

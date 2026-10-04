@@ -1,0 +1,113 @@
+/* Shimmer keyframe */
+@keyframes shimmer {
+  0% {
+    background-position: -600px 0;
+  }
+  100% {
+    background-position: 600px 0;
+  }
+}
+
+.wrap {
+  width: 100%;
+  min-height: 80vh;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 1199px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Shimmer block */
+.block {
+  border-radius: 4px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* Left column */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gallery {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+}
+
+.titleRow {
+  height: 36px;
+  width: 65%;
+}
+
+.subtitle {
+  height: 22px;
+  width: 40%;
+}
+
+.chips {
+  display: flex;
+  gap: 12px;
+}
+
+.chip {
+  height: 36px;
+  width: 110px;
+  border-radius: 4px;
+}
+
+.desc {
+  height: 18px;
+  width: 100%;
+}
+
+.descShort {
+  height: 18px;
+  width: 75%;
+}
+
+/* Right column */
+.right {
+  position: sticky;
+  top: 140px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: 0 0 0 1px #e8e8e8;
+}
+
+.priceLine {
+  height: 44px;
+  width: 70%;
+}
+
+.priceLineSm {
+  height: 24px;
+  width: 50%;
+}
+
+.btn {
+  height: 52px;
+  border-radius: 4px;
+}

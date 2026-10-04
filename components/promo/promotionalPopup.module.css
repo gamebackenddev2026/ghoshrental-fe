@@ -1,0 +1,216 @@
+.popup {
+  --promo-padding-x: 35px;
+  --promo-padding-y: 40px;
+  --promo-body-bottom: 35px;
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 500px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  overflow: hidden;
+}
+
+@media (max-width: 1536px) {
+  .popup {
+    --promo-padding-x: 20px;
+    --promo-padding-y: 20px;
+    --promo-body-bottom: 25px;
+    bottom: 24px;
+    left: 24px;
+    width: 406px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .popup {
+    bottom: 28px;
+    left: 28px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .popup {
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .popup {
+    bottom: 20px;
+    left: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .popup {
+    bottom: 15px;
+    left: 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  .popup {
+    bottom: 12px;
+    left: 12px;
+    width: calc(100% - 24px);
+    max-width: 406px;
+  }
+}
+
+.header {
+  position: relative;
+  min-height: 200px;
+  padding: var(--promo-padding-y) var(--promo-padding-x);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1536px) {
+  .header {
+    min-height: 170px;
+  }
+}
+
+@media (max-width: 575px) {
+  .header {
+    min-height: 150px;
+  }
+}
+
+.closeButton {
+  background: transparent;
+  position: absolute;
+  pointer-events: auto;
+  top: 22px;
+  right: 22px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  z-index: 30;
+  border: none;
+  outline: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:focus,
+.closeButton:active {
+  outline: none;
+  box-shadow: none;
+}
+
+@media (max-width: 1536px) {
+  .closeButton {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+.tagRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  margin-bottom: 4px;
+}
+
+.tagIcon {
+  width: 16px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  margin: 12px 0 0;
+}
+
+.offerText {
+  width: max-content;
+  max-width: 100%;
+  margin: 12px 0 0;
+}
+
+.popupBody {
+  background: #fff;
+  padding: 20px var(--promo-padding-x) var(--promo-body-bottom);
+}
+
+.description {
+  margin: 0 0 12px;
+  line-height: 25px;
+}
+
+.description :global(p) {
+  margin: 0;
+}
+
+.description :global(p + p) {
+  margin-top: 8px;
+}
+
+.cta {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+:global(.arabic) .header {
+  padding: var(--promo-padding-y) var(--promo-padding-x);
+}
+
+:global(.arabic) .closeButton {
+  top: 22px;
+  right: auto;
+  left: 22px;
+}
+
+:global(.arabic) .popupBody {
+  padding: 20px var(--promo-padding-x) 45px;
+}
+
+@media (max-width: 1536px) {
+  :global(.arabic) .closeButton {
+    top: 12px;
+    left: 12px;
+  }
+}

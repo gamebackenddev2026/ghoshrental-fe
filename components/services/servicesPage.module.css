@@ -1,0 +1,678 @@
+/* /services — mirrors https://www.ghostrentals.com/services */
+
+.page {
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* ── Hero (Angular: .bannerPadding + .overlay + .home .content / .pad-left / size88 / size20 / .heading-width) ── */
+.hero {
+  position: relative;
+  background: #fff;
+  height: 100vh;
+  min-height: 520px;
+  padding: 100px 28px 28px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1536px) {
+  .hero {
+    padding: 100px 24px 24px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .hero {
+    padding: 100px 20px 20px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .hero {
+    padding: 100px 15px 15px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    padding: 72px 20px 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 72px 20px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 68px 15px 15px;
+    height: 88vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 60px 12px 12px;
+  }
+}
+
+.heroInner {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.heroMedia {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 4px;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 4px;
+  background: transparent linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, #00000000 100%) 0% 0% no-repeat padding-box;
+}
+
+.heroContent {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 2rem 2rem 2rem 13rem;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 1920px) {
+  .heroContent {
+    padding-left: 131px;
+  }
+}
+
+@media screen and (max-width: 1536px) {
+  .heroContent {
+    padding-left: 90px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .heroContent {
+    padding-left: 85px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .heroContent {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroContent {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .heroContent {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 991px) {
+  .heroContent {
+    justify-content: flex-end;
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Angular .size88 */
+.heroTitle {
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: 84px;
+  font-weight: 200;
+  line-height: 1.25;
+  color: #fff;
+  margin: 0 0 0px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.55);
+  -webkit-font-smoothing: antialiased;
+  width: 80% !important;
+}
+
+@media (max-width: 1650px) {
+  .heroTitle {
+    font-size: 54px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .heroTitle {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroTitle {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 360px) {
+  .heroTitle {
+    font-size: 26px;
+  }
+}
+
+/* Angular .heading-width (banner) */
+@media screen and (max-width: 1920px) {
+  .heroTitle {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1536px) {
+  .heroTitle {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .heroTitle {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1433px) {
+  .heroTitle {
+    width: 93%;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .heroTitle {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .heroTitle {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .heroTitle {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .heroTitle {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .heroTitle {
+    width: 100%;
+  }
+}
+
+/* Angular .home .content h1 spacing */
+@media (max-width: 1536px) {
+  .heroTitle {
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .heroTitle {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroTitle {
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 575px) {
+  .heroTitle {
+    margin-bottom: 4px;
+  }
+}
+
+/* Angular .size20 + .beige-color; .home .content .hero-para widths */
+.heroSub {
+  font-family: 'Red Hat Display', 'RedHat Regular', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #f8f4f0;
+  margin: 0 0 1.5rem;
+  max-width: 478px;
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1680px) {
+  .heroSub {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroSub {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 575px) {
+  .heroSub {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .heroSub {
+    max-width: 422px;
+    margin-bottom: 28px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .heroSub {
+    max-width: 375px;
+    margin-bottom: 26px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .heroSub {
+    max-width: 374px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroSub {
+    max-width: 422px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSub {
+    max-width: 69%;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroSub {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+}
+
+/* ── Intro band ── */
+.intro {
+  padding: 5.5rem 5rem;
+  max-width: 1500px;
+}
+
+@media (min-width: 768px) {
+  .intro {
+    padding: 5.5rem 8rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro {
+    padding: 3.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro {
+    padding: 2.5rem 1rem;
+  }
+}
+
+.introEyebrow {
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #1d1d1d;
+  margin: 0 0 0.4rem;
+}
+
+.introText {
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1d1d1d;
+  margin: 0 0 0.5rem;
+  max-width: 780px;
+}
+
+@media (max-width: 767px) {
+  .introText {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .introText {
+    font-size: 1.2rem;
+  }
+}
+
+.introSub {
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #5f5f5f;
+  margin: 0;
+  max-width: 620px;
+}
+
+@media (max-width: 480px) {
+  .introSub {
+    font-size: 0.875rem;
+  }
+}
+
+/* ── Service strips (mirrors Angular .service) ── */
+.serviceSection {
+  padding: 0;
+}
+
+.serviceRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem 3rem;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 8rem;
+}
+
+.serviceRowWhite {
+  background: #f8f8f8;
+  color: #1d1d1d;
+}
+
+.serviceRowBlack {
+  background: #0f0f0f;
+  color: #fff;
+}
+
+.serviceRowRev .serviceText {
+  order: 1;
+}
+
+.serviceRowRev .serviceFigure {
+  order: 2;
+}
+
+.serviceText {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.eyebrow {
+  font-family: 'Red Hat Display', 'RedHat Bold', Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 0 0 0.5rem;
+}
+
+.serviceRowWhite .eyebrow {
+  color: #1d1d1d;
+}
+
+.serviceRowBlack .eyebrow {
+  color: #fff;
+}
+
+.heading2 {
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: 3rem;
+  font-weight: 200;
+  line-height: 1.2;
+  margin: 0 0 1.2rem;
+  text-transform: capitalize;
+}
+
+@media (max-width: 1199px) {
+  .heading2 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .heading2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading2 {
+    font-size: 1.5rem;
+  }
+}
+
+.heading3 {
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  line-height: 1.4;
+  margin: 0 0 1.2rem;
+}
+
+.serviceRowWhite .heading2,
+.serviceRowWhite .heading3 {
+  color: #1d1d1d;
+}
+
+.serviceRowBlack .heading2,
+.serviceRowBlack .heading3 {
+  color: #fff;
+}
+
+.body {
+  font-family: 'Red Hat Display', 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 1.23rem;
+  font-weight: 600;
+  line-height: 1.65;
+  margin: 0 0 1rem;
+  max-width: 90%;
+}
+
+.serviceRowWhite .body {
+  color: #3a3a3a;
+}
+
+.serviceRowBlack .body {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.listLead {
+  font-family: 'Red Hat Display', 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 1.23rem;
+  font-weight: 600;
+  margin: 1.2rem 0 1.2rem;
+}
+
+.list {
+  margin: 0 0 3rem;
+  padding: 0;
+  list-style: none;
+  font-family: 'Red Hat Display', 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.serviceRowWhite .list {
+  color: #1d1d1d;
+}
+
+.serviceRowBlack .list {
+  color: #fff;
+}
+
+.list li {
+  margin-bottom: 0.25rem;
+}
+
+.serviceFigure {
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.serviceImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  min-height: 550px;
+  max-height: 600px;
+}
+
+@media (max-width: 991px) {
+  .serviceImg {
+    min-height: 320px;
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .serviceImg {
+    min-height: 220px;
+    max-height: 280px;
+  }
+}
+
+/*
+ * Buttons used on /services.
+ */
+.btn {
+  display: inline-block;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #000;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 2px #000;
+  padding: 1.4rem 3.8rem;
+  font-family: 'Red Hat Display', 'RedHat Bold', Arial, sans-serif;
+  font-size: 1.23rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  text-align: center;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+.btn:focus,
+.btn:focus-visible {
+  box-shadow: inset 0 0 0 2px #000;
+}
+
+/* Light/outline variant used on the dark service strips. */
+.btnLight {
+  color: #fff;
+  background: transparent;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+.btnLight:hover {
+  background: #fff;
+  color: #000;
+}
+
+.btnLight:focus,
+.btnLight:focus-visible {
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+/* Responsive padding/font scale — mirrors the production size18 + button
+   breakpoints (1680 / 1440 / 1280 / 576 / 384). */
+@media (max-width: 1680px) {
+  .btn {
+    padding: 18px 60px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .btn {
+    padding: 18px 40px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .btn {
+    padding: 15px 35px;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn {
+    padding: 14px 25px;
+  }
+}
+
+@media (max-width: 991px) {
+  .serviceRow {
+    grid-template-columns: 1fr;
+    padding: 3rem 2rem;
+  }
+
+  .serviceRowRev .serviceText,
+  .serviceRowRev .serviceFigure {
+    order: unset;
+  }
+
+  .serviceFigure {
+    order: -1;
+  }
+}

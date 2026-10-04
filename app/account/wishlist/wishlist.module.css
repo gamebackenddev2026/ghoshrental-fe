@@ -1,0 +1,499 @@
+.section {
+  min-height: 100vh;
+  background: #f4f4f7;
+  padding: 7.5rem 1.25rem 3rem;
+}
+
+.container {
+  width: min(100%, 84rem);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+
+/* ── Main content ─────────────────────────── */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 0;
+  color: #16171a;
+  font-family: 'RedHat Bold', Arial, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0.2rem 0 0;
+  color: #7c808a;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.875rem;
+}
+
+.count {
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.875rem;
+  color: #7c808a;
+}
+
+/* ── Grid ─────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── Car card — exact homepage .carCard style ── */
+.card {
+  background: #fff;
+  border: 1px solid rgba(29, 29, 29, 0.1);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 12px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition:
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  border-color: rgba(29, 29, 29, 0.14);
+  z-index: 5;
+}
+
+/* exact .thumbnailWrap */
+.imageWrap {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #f0f0f2;
+}
+
+.imageLink {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c0c3cc;
+}
+
+.imagePlaceholderLogo {
+  width: 60%;
+  height: auto;
+  opacity: 0.3;
+  object-fit: contain;
+}
+
+/* heart-style remove button */
+.removeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(4px);
+  color: #c0392b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s ease;
+}
+
+.removeBtn:hover {
+  background: #fff;
+}
+
+.removeBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* exact .cardBody */
+.cardBody {
+  padding: 12px 6px 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.carNameLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* exact .carName */
+.carName {
+  font-family: 'RedHat Bold', Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.25;
+  color: #1d1d1d;
+  margin: 0 0 4px;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* exact .transmission */
+.carType {
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin: 0 0 0.55rem;
+  text-transform: capitalize;
+  color: #4f5256;
+  letter-spacing: 0.02em;
+}
+
+/* exact .specs */
+.carMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0;
+  border-top: 1px solid rgba(29, 29, 29, 0.08);
+  border-bottom: 1px solid rgba(29, 29, 29, 0.08);
+  padding: 10px 2px;
+}
+
+/* exact .specItem */
+.metaChip {
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.metaChip:not(:last-child) {
+  border-right: 1px solid rgba(29, 29, 29, 0.06);
+}
+
+/* exact .specItem img */
+.metaIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+  object-fit: contain;
+  margin: 0;
+  display: block;
+  opacity: 0.72;
+}
+
+/* exact .specItem h6 */
+.metaLabel {
+  font-size: 0.6875rem;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #5c5f63;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* exact .cardFooter */
+.cardFooter {
+  padding: 12px 4px 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+/* exact .priceBlock */
+.priceBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+/* exact .oldPrice */
+.oldPrice {
+  display: block;
+  max-width: 100%;
+  font-size: 0.6875rem;
+  color: #9a9da2;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: line-through;
+}
+
+/* exact .priceMain */
+.priceMain {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  white-space: nowrap;
+  min-width: 0;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* exact .newPrice */
+.price {
+  display: inline-flex;
+  align-items: center;
+  font-size: clamp(1.1rem, 2.2vw, 1.65rem);
+  font-family: 'RedHat Bold', Arial, sans-serif;
+  color: #0f0f0f;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* exact .pricePeriod */
+.priceUnit {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #4f5256;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* exact .actionBtn style */
+.actionBtn {
+  min-width: 38px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(29, 29, 29, 0.22);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: #1d1d1d;
+  flex-shrink: 0;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.actionBtn img {
+  width: 1.05rem;
+  height: 1.05rem;
+  filter: none;
+  transition: filter 0.3s ease;
+}
+
+.actionBtn[data-variant='call'] img {
+  filter: brightness(0);
+}
+
+.actionBtn[data-variant='call']:hover {
+  background: #1d1d1d;
+}
+
+.actionBtn[data-variant='call']:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.actionBtn[data-variant='whatsapp'] {
+  box-shadow: inset 0 0 0 1px #25d366;
+}
+
+.actionBtn[data-variant='whatsapp']:hover {
+  background: #25d366;
+}
+
+.actionBtn[data-variant='whatsapp']:hover img {
+  filter: brightness(0) invert(1);
+}
+
+/* exact .actions */
+.actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── States ───────────────────────────────── */
+.loadingWrap,
+.emptyWrap {
+  background: #fff;
+  border: 1px solid #e8e9ec;
+  border-radius: 4px;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+}
+
+.spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid #e8e9ec;
+  border-top-color: #1d1d1d;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  margin: 0 auto 0.75rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingText {
+  margin: 0;
+  color: #7c808a;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.875rem;
+}
+
+.emptyIcon {
+  color: #d0d2d8;
+  margin-bottom: 0.85rem;
+}
+
+.emptyTitle {
+  margin: 0 0 0.3rem;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 1.05rem;
+  color: #3a3c42;
+}
+
+.emptyText {
+  margin: 0 0 1.25rem;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.875rem;
+  color: #9b9fa8;
+}
+
+.browseLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #1d1d1d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 0.65rem 1.4rem;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 0.875rem;
+  transition: opacity 0.2s ease;
+}
+
+.browseLink:hover {
+  opacity: 0.85;
+}
+
+.errorBanner {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  color: #9d1f1f;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Responsive ──────────────────────────── */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 6rem 0 2rem;
+    overflow-x: hidden;
+  }
+  .container {
+    gap: 0;
+    width: 100%;
+    min-width: 0;
+  }
+  .content {
+    padding: 0 0.9rem;
+    gap: 0.9rem;
+    margin-top: 1rem;
+    min-width: 0;
+  }
+  .pageHeader {
+    display: none;
+  }
+  /* Single column on phones: the card footer (price + 2 action buttons)
+     needs ~200px min-width — 2-col layout is too tight below 640px */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

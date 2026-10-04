@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Performa Light';
+  src: url('/assets/fonts/perfoma/performa-ex-light.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RedHat Regular';
+  src: url('/assets/fonts/red-hat/RedHatDisplay-Regular.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RedHat Medium';
+  src: url('/assets/fonts/red-hat/RedHatDisplay-Medium.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RedHat SemiBold';
+  src: url('/assets/fonts/red-hat/RedHatDisplay-SemiBold.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RedHat Bold';
+  src: url('/assets/fonts/red-hat/RedHatDisplay-Bold.woff') format('woff');
+  font-display: swap;
+}
+
+:root {
+  --color-black: #1d1d1d;
+  --color-white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  background-color: #1d1d1d;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-black);
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* RTL baseline (Arabic) — applied when <html dir="rtl"> */
+html[dir='rtl'] body {
+  direction: rtl;
+}
+
+html[dir='rtl'] input,
+html[dir='rtl'] textarea,
+html[dir='rtl'] [contenteditable='true'] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir='rtl'] input[type='email'],
+html[dir='rtl'] input[type='tel'],
+html[dir='rtl'] input[type='number'],
+html[dir='rtl'] input[type='url'] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Google Translate: hide top banner/frame and keep layout stable */
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+body > .goog-te-banner-frame,
+body > .skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+html {
+  top: 0 !important;
+}
+
+/* Google Translate sometimes injects inline styles that add a top offset */
+body[style*='top:'] {
+  top: 0 !important;
+}
+
+/* Google Translate hidden mount — must not leave a white seam at page bottom */
+#google_translate_element,
+#google_translate_element .skiptranslate,
+#google_translate_element iframe {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.performa-light {
+  font-family: 'Performa Light', 'Times New Roman', serif;
+}
+
+.redhat-regular {
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+}
+
+.redhat-medium {
+  font-family: 'RedHat Medium', 'Red Hat Display', Arial, sans-serif;
+}
+
+.redhat-semibold {
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+}
+
+.redhat-bold {
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+}
+
+.size16 {
+  font-size: 16px;
+}
+
+.size18 {
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+@media (max-width: 1440px) {
+  .size18 {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 768px) {
+  .size18 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 575px) {
+  .size18 {
+    font-size: 15px;
+  }
+}
+
+.size22 {
+  font-size: 22px;
+}
+
+@media (max-width: 1024px) {
+  .size22 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .size22 {
+    font-size: 18px;
+  }
+}
+
+.size55 {
+  font-size: 55px;
+  line-height: 1.1;
+}
+
+@media (max-width: 1680px) {
+  .size55 {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .size55 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .size55 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .size55 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 576px) {
+  .size55 {
+    font-size: 22px;
+  }
+}
+
+.size60 {
+  font-size: 60px;
+}
+
+@media (max-width: 1680px) {
+  .size60 {
+    font-size: 58px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .size60 {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .size60 {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .size60 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .size60 {
+    font-size: 24px;
+  }
+}
+
+.size90 {
+  font-size: 90px;
+  line-height: 1.05;
+}
+
+@media (max-width: 1680px) {
+  .size90 {
+    font-size: 75px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .size90 {
+    font-size: 62px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .size90 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .size90 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .size90 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 576px) {
+  .size90 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  .size90 {
+    font-size: 26px;
+  }
+}
+
+.white-color {
+  color: var(--color-white);
+}
+
+.black-color {
+  color: var(--color-black);
+}
+
+.gray-color {
+  color: #1d1d1d;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+/* ── Global button styles ──────────────────────────────────────────────── */
+.white-button {
+  display: inline-block;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 2px #fff;
+  padding: 18px 66px;
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 18px;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+@media (max-width: 1680px) {
+  .white-button {
+    padding: 16px 60px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 1440px) {
+  .white-button {
+    padding: 9px 40px;
+  }
+}
+@media (max-width: 1280px) {
+  .white-button {
+    padding: 8px 35px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 576px) {
+  .white-button {
+    padding: 12px 25px;
+  }
+}
+@media (max-width: 384px) {
+  .white-button {
+    padding: 4px 25px;
+  }
+}
+
+.white-button:hover {
+  background: #fff;
+  color: #1d1d1d;
+}
+
+.black-button {
+  display: inline-block;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #1d1d1d;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 2px #1d1d1d;
+  padding: 18px 66px;
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 18px;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+@media (max-width: 1680px) {
+  .black-button {
+    padding: 16px 60px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 1440px) {
+  .black-button {
+    padding: 9px 40px;
+  }
+}
+@media (max-width: 1280px) {
+  .black-button {
+    padding: 8px 35px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 576px) {
+  .black-button {
+    padding: 12px 25px;
+  }
+}
+@media (max-width: 384px) {
+  .black-button {
+    padding: 4px 25px;
+  }
+}
+
+.black-button:hover {
+  background: #1d1d1d;
+  color: #fff;
+}
+
+/* AOS — slower, smoother fade-up scroll reveals site-wide */
+[data-aos='fade-up'] {
+  will-change: opacity, transform;
+}
+
+[data-aos].aos-animate {
+  transition-duration: 2.2s !important;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Swiper sets a fixed slide height in some modes — always size to content */
+.swiper-slide {
+  height: auto !important;
+}

@@ -1,0 +1,51 @@
+.aedSymbol {
+  display: inline-block;
+  width: 0.78em;
+  height: 0.78em;
+  vertical-align: -0.08em;
+  flex-shrink: 0;
+}
+
+.textSymbol {
+  line-height: 1;
+}
+
+.priceWrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18em;
+  white-space: nowrap;
+}
+
+.priceWrapStrikethrough {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+/* Wrap FormattedPrice + suffix; line-through on inline-flex/SVG needs a pseudo line */
+.strikeWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: fit-content;
+  max-width: 100%;
+  line-height: 1.35;
+  vertical-align: baseline;
+  align-self: flex-start;
+}
+
+.strikeWrap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1.5px;
+  transform: translateY(-50%);
+  background-color: currentColor;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 2;
+}

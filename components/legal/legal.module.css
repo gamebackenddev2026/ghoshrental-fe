@@ -1,0 +1,395 @@
+/* Legal pages — mirrors privacy & terms layout on https://www.ghostrentals.com */
+
+.sectionPadding {
+  padding: 160px 248px 88px;
+}
+
+@media screen and (max-width: 1920px) {
+  .sectionPadding {
+    padding: 124px 188px 88px;
+  }
+}
+
+@media screen and (max-width: 1536px) {
+  .sectionPadding {
+    padding: 118px 138px 76px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .sectionPadding {
+    padding: 110px 100px 72px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .sectionPadding {
+    padding: 104px 118px 68px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .sectionPadding {
+    padding: 98px 92px 64px;
+  }
+}
+
+@media (max-width: 820px) {
+  .sectionPadding {
+    padding: 5.25rem 2rem 2.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionPadding {
+    padding: 5.25rem 1.5rem 2.75rem;
+  }
+}
+
+@media (max-width: 602px) {
+  .sectionPadding {
+    padding: 5rem 1.75rem 3rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .sectionPadding {
+    padding: 4.75rem 1.25rem 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionPadding {
+    padding: 4.5rem 1.125rem 2.35rem;
+  }
+}
+
+.containerFluid {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.headingWidth {
+  width: 73%;
+}
+
+@media screen and (max-width: 1920px) {
+  .headingWidth {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1433px) {
+  .headingWidth {
+    width: 93%;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .headingWidth {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .headingWidth {
+    width: 100%;
+  }
+}
+
+.h1 {
+  margin-bottom: 2.75rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.07;
+}
+
+@media screen and (max-width: 1536px) {
+  .h1 {
+    margin-bottom: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .h1 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .h1 {
+    margin-bottom: 1.35rem;
+    line-height: 1.15;
+  }
+}
+
+.h2 {
+  margin: 0 0 2rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.tightHeading {
+  margin-bottom: 2.15rem !important;
+}
+
+@media screen and (max-width: 1536px) {
+  .h2 {
+    margin: 0 0 1.2rem;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .h2 {
+    margin: 0 0 1.1rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .h2 {
+    margin: 0 0 0.95rem;
+  }
+}
+
+.p {
+  margin-bottom: 2.25rem;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 1536px) {
+  .p {
+    margin-bottom: 1.05rem;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .p {
+    margin-bottom: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .p {
+    margin-bottom: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+.margin42 {
+  margin-bottom: 22px;
+}
+
+@media screen and (max-width: 1280px) {
+  .margin42 {
+    margin-bottom: 14px;
+  }
+}
+
+.intro {
+  /* Space between intro paragraph(s) and first section heading */
+  margin-bottom: 1.75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .intro {
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Fade-up wrappers — heading, copy, and divider lines animate as one unit */
+.revealBlock {
+  width: 100%;
+}
+
+.sectionBlock {
+  width: 100%;
+}
+
+/* Same spacing as former .divider — line sits inside the animated block */
+.sectionDivider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  border: none;
+  background: rgba(17, 17, 17, 0.2);
+}
+
+@media (max-width: 768px) {
+  .sectionDivider {
+    margin: 1.15rem 0 1.5rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .sectionDivider {
+    margin: 1rem 0 1.35rem;
+  }
+}
+
+.list {
+  list-style-position: outside;
+  padding-left: 2.5rem;
+  margin: 0 0 1.2rem;
+  line-height: 1.1;
+}
+
+.list li {
+  margin-bottom: 0.45rem;
+}
+
+.list li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .list,
+  .olList {
+    margin-bottom: 1rem;
+    line-height: 1.55;
+  }
+
+  .list {
+    padding-left: 1.35rem;
+  }
+
+  .olList {
+    padding-left: 1.25rem;
+  }
+
+  .list li,
+  .olList > li {
+    margin-bottom: 0.6rem;
+  }
+
+  .contactList {
+    padding-left: 1.25rem;
+    margin-top: 0.25rem;
+  }
+
+  .intro {
+    margin-bottom: 0.5rem;
+  }
+
+  .margin42 {
+    margin-bottom: 0.95rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .list {
+    padding-left: 1.2rem;
+  }
+
+  .olList {
+    padding-left: 1.1rem;
+  }
+
+  .contactList {
+    padding-left: 1.1rem;
+  }
+}
+
+.olList {
+  list-style-position: outside;
+  padding-left: 1.9rem;
+  margin: 0 0 1.2rem;
+  line-height: 1.1;
+}
+
+.olList > li {
+  margin-bottom: 0.85rem;
+  line-height: 1.1;
+}
+
+.olList > li:last-child {
+  margin-bottom: 0;
+}
+
+.olList p {
+  margin: 0.3rem 0 0.45rem;
+  line-height: 1.5;
+  font-weight: inherit;
+}
+
+.olList .nestedList {
+  list-style: disc;
+  list-style-position: outside;
+  padding-left: 1.6rem;
+  margin: 0.3rem 0 0.3rem;
+}
+
+.olList .nestedList li {
+  margin-bottom: 0.3rem;
+}
+
+.liMarkerBold li::marker {
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif !important;
+  font-weight: 700;
+}
+
+.contactList {
+  list-style: disc;
+  list-style-position: outside;
+  padding-left: 1.9rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.contactList li {
+  margin-bottom: 0.4rem;
+}
+
+.paymentPolicyBorder {
+  border-bottom: 1px solid rgba(17, 17, 17, 0.2);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+/* CMS HTML editor output (TipTap) */
+.richText {
+  line-height: 1.5;
+}
+
+.richText p {
+  margin: 0 0 0.75rem;
+}
+
+.richText p:last-child {
+  margin-bottom: 0;
+}
+
+.richText ul,
+.richText ol {
+  margin: 0.5rem 0 0.75rem;
+  padding-left: 1.6rem;
+}
+
+.richText li {
+  margin-bottom: 0.35rem;
+}
+
+.richText strong,
+.richText b {
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 700;
+}
+
+.richText a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}

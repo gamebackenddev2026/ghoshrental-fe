@@ -1,0 +1,999 @@
+/* /about — mirrors https://www.ghostrentals.com/about */
+
+.page {
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* ── Hero — shell matches product list `.listHeroSection` / `.listHeroBannerPadding` ── */
+.hero {
+  position: relative;
+  background: #fff;
+  height: 100vh;
+  min-height: 520px;
+  padding: 100px 28px 28px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1536px) {
+  .hero {
+    padding: 100px 24px 24px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .hero {
+    padding: 100px 15px 15px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero {
+    padding: 72px 20px 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 72px 20px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 68px 16px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 60px 14px 14px;
+  }
+}
+
+.heroInner {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.heroMedia {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 4px;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 4px;
+  background: transparent linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, #00000000 100%) 0% 0% no-repeat padding-box;
+  pointer-events: none;
+}
+
+/* Matches product list `.listHeroContent` (ProductListClient banner) */
+.heroContent {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: min(100vh, 56rem);
+  padding-left: 13rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+@media (max-width: 1920px) {
+  .heroContent {
+    padding-left: 131px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .heroContent {
+    padding-left: 90px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .heroContent {
+    padding-left: 85px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroContent {
+    padding-left: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    padding-left: 48px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroContent {
+    padding-left: 20px;
+  }
+}
+
+.heroTitle {
+  margin: 0 0 14px;
+  color: #ffffff;
+  font-size: 5.35rem;
+  line-height: 1.25;
+  font-weight: 200;
+  max-width: 80%;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.55);
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Performa Light', 'Times New Roman', serif;
+}
+
+.heroSub {
+  margin: 0;
+  max-width: 35%;
+  color: #f8f4f0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.4);
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+}
+
+@media (max-width: 1536px) {
+  .heroTitle {
+    font-size: 4.5rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .heroTitle {
+    font-size: 3.75rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .heroTitle {
+    font-size: 3rem;
+    margin-bottom: 8px;
+  }
+
+  .heroSub {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: 88vh;
+    padding: 15px;
+  }
+
+  .heroTitle {
+    font-size: 2.5rem;
+    max-width: 100%;
+  }
+
+  .heroSub {
+    max-width: 69%;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    padding: 12px;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+    margin-bottom: 4px;
+  }
+
+  .heroSub {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+}
+
+/* ── Shared section bits ── */
+.sectionHead {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 1.25rem;
+}
+
+.sectionTitle {
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 200;
+  line-height: 1.15;
+  margin: 0;
+  color: #1d1d1d;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Brands ── */
+.brands {
+  padding: 3.5rem 0 0rem;
+}
+
+.brandsInner {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/*
+ * Mirrors the production Angular title class chain on /about:
+ *   `text-center size22 redhat-bold mb-4 mb-md-5 gray-color`
+ * Responsive font-size steps come from the same size22 breakpoints.
+ */
+.brandsHeading {
+  text-align: center;
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: #1d1d1d;
+  margin: 0 auto 0rem;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 1680px) {
+  .brandsHeading {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .brandsHeading {
+    font-size: 18px;
+  }
+}
+
+.journey {
+  background: #fff;
+  padding: 0 0 0 3.5rem;
+}
+
+.journeyInner {
+  width: 100%;
+  padding: 0rem 0 2rem 10.5rem;
+}
+
+@media (max-width: 575px) {
+  .journey {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .journeyInner {
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .journeyInner {
+    padding-left: 5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .journeyInner {
+    padding: 0 0 2rem 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .journeyInner {
+    padding: 0 0 2rem 0;
+  }
+}
+
+.journeyGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 0;
+  align-items: stretch;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .journeyGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.journeyText {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Mirrors Bootstrap col-xl-5 default gutter padding */
+  padding: 0 1rem 0 3rem;
+}
+
+@media screen and (max-width: 1440px) {
+  .journeyText {
+    padding-left: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .journeyText {
+    padding: 0 3rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .journeyText {
+    padding: 0 1rem;
+  }
+}
+
+.eyebrow {
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0;
+  color: #1d1d1d;
+}
+
+@media (max-width: 575px) {
+  .eyebrow {
+    font-size: 15px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.journeyHeading {
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: 3.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0 0 1.5rem;
+  color: #1d1d1d;
+  text-transform: capitalize;
+}
+
+@media (max-width: 1680px) {
+  .journeyHeading {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .journeyHeading {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .journeyHeading {
+    font-size: 32px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .journeyHeading {
+    font-size: 26px;
+  }
+}
+
+.body {
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0 0 2rem;
+  font-weight: 500;
+  color: #1d1d1d;
+}
+
+.body:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .body {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 575px) {
+  .body {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
+
+.journeyMedia {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.journeyImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Desktop image: visible on lg (>=992px) screens, matches Angular d-lg-block d-none */
+.journeyImgDesktop {
+  display: block;
+}
+
+/* Mobile image: hidden by default, shown on screens below lg */
+.journeyImgMobile {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .journeyImgDesktop {
+    display: none;
+  }
+
+  .journeyImgMobile {
+    display: block;
+    margin-top: 1.5rem;
+  }
+}
+
+/* ── Experience the difference (mirrors Angular .features section) ── */
+.difference {
+  background: #fff;
+  color: #1d1d1d;
+}
+
+.differenceInner {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+@media (max-width: 1280px) {
+  .differenceInner {
+    padding: 4rem 1.5rem 3rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .differenceInner {
+    padding: 2.5rem 1rem 2rem;
+  }
+}
+
+.differenceInner .sectionTitle {
+  text-align: center;
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: 3.8rem;
+  font-weight: 500;
+  line-height: 2;
+  letter-spacing: -0.01em;
+  color: #1d1d1d;
+  margin: 0 auto 3.5rem;
+  text-transform: capitalize;
+}
+
+@media (max-width: 1680px) {
+  .differenceInner .sectionTitle {
+    font-size: 48px;
+    line-height: 1.15;
+  }
+}
+
+@media (max-width: 1280px) {
+  .differenceInner .sectionTitle {
+    font-size: 40px;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .differenceInner .sectionTitle {
+    font-size: 32px;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .differenceInner .sectionTitle {
+    font-size: 26px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.diffGrid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem 0rem;
+  justify-items: center;
+  max-width: 1580px;
+}
+
+@media (max-width: 1100px) {
+  .diffGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .diffGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.diffCard {
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  padding: 0 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 450px;
+}
+
+.diffIcon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  margin: 0 auto 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .diffIcon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.diffIcon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  filter: brightness(0);
+}
+
+.diffTitle {
+  font-family: 'RedHat ExtraBold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 1.65rem;
+  font-weight: 900;
+  line-height: 1.3;
+  margin: 0 0 0.75rem;
+  color: #1d1d1d;
+  text-align: center;
+}
+
+@media (max-width: 1280px) {
+  .diffTitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .diffTitle {
+    font-size: 18px;
+  }
+}
+
+.diffText {
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  margin: 0;
+  color: #1d1d1d;
+  text-align: center;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .diffText {
+    font-size: 15px;
+  }
+}
+
+/* ── Signature services (Angular about.component.html layout, LTR borders) ── */
+.signature {
+  background: #fff;
+}
+
+.signatureInner {
+  max-width: 105rem;
+  margin: 0 auto;
+  padding: 0rem 1.5rem 3.75rem;
+}
+
+.signaturePanel {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #070707;
+  background-size: cover;
+  background-position: center;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+}
+
+.signatureBg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0.78) 100%),
+    radial-gradient(75rem 26rem at 50% 55%, rgba(255, 255, 255, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.signatureGrid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 28rem;
+}
+
+.signatureMain {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-right: 0.0625rem solid rgba(243, 243, 243, 0.35);
+}
+
+.signatureTopBand {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border-bottom: 0.0625rem solid rgba(243, 243, 243, 0.35);
+}
+
+.signatureTitleCell {
+  border-left: 0.0625rem solid rgba(243, 243, 243, 0.35);
+  padding: 2.5rem 1.5rem 2rem 2rem;
+  min-width: 0;
+}
+
+.signatureIntroCell {
+  padding: 2.5rem 2rem 2rem 1.5rem;
+  min-width: 0;
+}
+
+.signatureChauffeurMobile {
+  display: none;
+}
+
+.signatureBottomBand {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  flex: 1;
+  align-items: stretch;
+}
+
+.signatureCarCell {
+  border-right: 0.0625rem solid rgba(243, 243, 243, 0.35);
+}
+
+.sigColInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 2rem 1.5rem 2.5rem 2rem;
+  gap: 0;
+}
+
+.signatureYachtCell .sigColInner {
+  padding: 2rem 2rem 2.5rem 1.5rem;
+}
+
+.signatureAside {
+  display: none;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 2.5rem 2rem 2.5rem 1.75rem;
+  min-height: 100%;
+}
+
+.signatureAsideBody {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.signatureAsideCta {
+  flex-shrink: 0;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.sigH1 {
+  margin: 0 0 5rem;
+  font-weight: 500;
+  font-size: 3.75rem;
+  line-height: 1.06;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sigH2Stack {
+  margin: 0 0 0.625rem;
+  font-weight: 200;
+  font-size: 3.75rem;
+  line-height: 1.06;
+  max-width: 22rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sigAsideTitle {
+  margin: 0 0 1.625rem;
+  font-weight: 200;
+  font-size: 2rem;
+  line-height: 1.12;
+  max-width: 22rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sigServiceTitle {
+  margin: 0 0 0.625rem;
+  font-weight: 800;
+  font-size: 1.625rem;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sigBody {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.sigIntroMobile {
+  display: none;
+}
+
+.sigStackBeforeBtn {
+  margin-bottom: 2.5625rem;
+}
+
+.sigColGrow {
+  flex: 1 1 auto;
+  margin-bottom: 2.5625rem;
+}
+
+/* Angular `white-button` — rem padding/border */
+.signaturePanel :global(.white-button) {
+  border-radius: 4px;
+  color: #fff;
+  box-shadow: inset 0 0 0 0.125rem #fff;
+  padding: 1.125rem 4.125rem;
+  font-size: 1.125rem;
+}
+
+.signaturePanel :global(.white-button:hover) {
+  background: #fff;
+  color: #1d1d1d;
+}
+
+@media (max-width: 105rem) {
+  .sigH1,
+  .sigH2Stack {
+    font-size: 3.625rem;
+  }
+
+  .signaturePanel :global(.white-button) {
+    padding: 1rem 3.75rem;
+  }
+}
+
+@media (max-width: 90rem) {
+  .signaturePanel :global(.white-button) {
+    padding: 0.5625rem 2.5rem;
+  }
+}
+
+@media (max-width: 80rem) {
+  .signaturePanel :global(.white-button) {
+    padding: 0.5rem 2.1875rem;
+  }
+}
+
+@media (max-width: 96rem) {
+  .sigH1,
+  .sigH2Stack {
+    font-size: 3rem;
+  }
+
+  .sigBody {
+    font-size: 0.875rem;
+  }
+
+  .sigServiceTitle {
+    font-size: 1.25rem;
+  }
+
+  .sigAsideTitle {
+    font-size: 1.375rem;
+  }
+}
+
+@media (max-width: 90rem) {
+  .sigH1,
+  .sigH2Stack {
+    font-size: 2.8125rem;
+  }
+}
+
+@media (max-width: 64rem) {
+  .sigH1,
+  .sigH2Stack {
+    font-size: 2.25rem;
+  }
+
+  .sigAsideTitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 62rem) {
+  .signatureGrid {
+    grid-template-columns: 2fr 1fr;
+    min-height: 31.25rem;
+  }
+
+  .signatureAside {
+    display: flex;
+  }
+}
+
+@media (max-width: 61.9375rem) {
+  .signatureMain {
+    border-right: none;
+  }
+
+  .signatureTopBand {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .signatureIntroCell {
+    display: none;
+  }
+
+  .sigIntroMobile {
+    display: block;
+    margin-top: 0.75rem;
+  }
+
+  .signatureChauffeurMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-left: 0.0625rem solid rgba(243, 243, 243, 0.35);
+    padding: 2rem 1.25rem;
+  }
+
+  .signatureBottomBand {
+    grid-template-columns: 1fr;
+  }
+
+  .signatureCarCell {
+    border-right: none;
+    border-bottom: 0.0625rem solid rgba(243, 243, 243, 0.35);
+  }
+
+  .sigColInner {
+    padding: 1.75rem 1.25rem 2rem;
+    min-height: 0;
+  }
+
+  .signatureYachtCell .sigColInner {
+    padding: 1.75rem 1.25rem 2rem;
+  }
+
+  .sigStackBeforeBtn {
+    margin-bottom: 1.5rem;
+  }
+
+  .sigColGrow {
+    margin-bottom: 1.5rem;
+  }
+
+  .sigH2Stack {
+    font-size: 2.25rem;
+  }
+
+  .sigServiceTitle {
+    font-size: 1.125rem;
+  }
+
+  .signaturePanel :global(.white-button) {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  .signaturePanel :global(.white-button) {
+    padding: 0.6rem 1.35rem;
+    font-size: 0.9375rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .signatureInner {
+    padding: 0rem 1rem 2.5rem;
+  }
+
+  .sigH1,
+  .sigH2Stack {
+    font-size: 1.5rem;
+  }
+
+  .signaturePanel :global(.white-button) {
+    padding: 0.5rem 1.1rem;
+    font-size: 0.875rem;
+  }
+
+  .signatureTopBand {
+    grid-template-columns: 1fr;
+  }
+
+  .signatureChauffeurMobile {
+    border-left: none;
+    border-top: 0.0625rem solid rgba(243, 243, 243, 0.35);
+  }
+
+  .signatureTitleCell {
+    border-left: none;
+    padding: 1.75rem 1.25rem;
+  }
+}
+
+@media (max-width: 24rem) {
+  .signaturePanel :global(.white-button) {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8125rem;
+  }
+}
+
+/* VIP + FAQ are global components; just spacing here */
+.vipWrap {
+  margin-top: 0;
+}

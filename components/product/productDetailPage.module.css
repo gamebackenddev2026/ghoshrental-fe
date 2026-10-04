@@ -1,0 +1,2118 @@
+/* Page shell — same tokens as /product/list (ghostrentals.com category list). */
+.productDetail {
+  padding: 5.25rem 0 2rem;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1745px;
+  margin: 0 auto;
+  /* padding: 0.85rem 1.25rem 1.5rem; */
+  background: #fff;
+  box-shadow: none;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 2.5rem 2rem 3rem;
+  }
+}
+
+.productHeader {
+  margin-bottom: 0.875rem;
+  padding: 0.75rem 0 1.25rem;
+}
+
+.bodyTypeLine {
+  font-size: 0.95rem;
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  margin: 0 0 0.35rem;
+  padding-bottom: 0.15rem;
+  color: #48494b;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.bodyTypeLink {
+  text-transform: uppercase !important;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.bodyTypeLink:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.bodyTypeLink span {
+  font-weight: 600;
+  text-transform: uppercase !important;
+}
+
+.titleLine {
+  font-size: clamp(1.35rem, 1.6vw, 2rem);
+  line-height: 1.15;
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  color: #1d1d1d;
+  font-weight: 700;
+  margin: 0;
+  padding-top: 0.15rem;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.mainCol {
+  min-width: 0;
+}
+
+.sideCol {
+  position: relative;
+  align-self: stretch;
+  min-height: 100%;
+}
+
+.stickyCardWrap {
+  position: relative;
+  z-index: 20;
+}
+
+/* JS toggles .stuck — CSS sticky breaks when body has overflow-x: hidden */
+.stuck {
+  position: fixed;
+  top: 150px;
+  z-index: 20;
+}
+
+.bottomReached {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.gallerySection {
+  position: relative;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.galleryStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mainImageWrap {
+  position: relative;
+  width: 100%;
+  background: #fff;
+}
+
+.mainImageStage {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+  height: min(62vh, 680px);
+  min-height: 380px;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.prevBtn,
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: auto;
+  height: auto;
+  border-radius: 100%;
+  background: transparent;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: #c5c5c5;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.prevBtn {
+  left: 14px;
+}
+
+.nextBtn {
+  right: 14px;
+}
+
+/* ── Thumbnail rail + View All — bottom-right stack over main image ── */
+.galleryThumbSection {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  left: 16px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  pointer-events: none;
+}
+
+.mainImageWrap:hover .galleryThumbSection {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.thumbRail {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none;
+}
+
+.thumbRail::-webkit-scrollbar {
+  display: none;
+}
+
+.thumbItem {
+  flex: 0 0 auto;
+  width: 180px;
+  height: 108px;
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  backdrop-filter: blur(6px) saturate(140%);
+  -webkit-backdrop-filter: blur(6px) saturate(140%);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  transition: box-shadow 0.2s ease;
+}
+
+.thumbItem:hover {
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.thumbActive {
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+.thumbImgWrap {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.thumbImgWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.thumbItem:hover .thumbImgWrap img {
+  transform: scale(1.06);
+}
+
+.thumbOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.thumbItem:hover .thumbOverlay {
+  opacity: 1;
+}
+
+.viewAllPhotosBtn {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.viewAllPhotosBtn:hover {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.galleryAllOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.galleryAllPanel {
+  width: min(960px, 100%);
+  max-height: min(88vh, 900px);
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.galleryAllHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid #ececec;
+  flex-shrink: 0;
+}
+
+.galleryAllTitle {
+  margin: 0;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 1.25rem;
+  color: #1d1d1d;
+}
+
+.galleryAllCount {
+  color: #5f5f5f;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-weight: 400;
+}
+
+.galleryAllClose {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  background: #1d1d1d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.galleryAllGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: max-content;
+  gap: 12px;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  align-items: start;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.galleryAllItem {
+  display: block;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 0;
+  background: #f5f5f5;
+  cursor: pointer;
+  width: 100%;
+  overflow: visible;
+  transition: border-color 0.2s ease;
+}
+
+.galleryAllItem:hover {
+  border-color: rgba(29, 29, 29, 0.25);
+}
+
+.galleryAllItemActive {
+  border-color: #1d1d1d;
+}
+
+.galleryAllImg {
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0;
+  object-fit: contain !important;
+  object-position: center;
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .galleryAllOverlay {
+    padding: 12px;
+  }
+
+  .galleryAllGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .viewAllPhotosBtn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+.wishlistIcon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 4;
+  width: 2.55rem;
+  height: 2.55rem;
+  border-radius: 100%;
+  border: 1px solid #d1d1d1;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heartStack {
+  position: relative;
+  display: block;
+  width: 23px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.heartBase,
+.heartFill {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: 0;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+  filter: none;
+}
+
+.heartBase {
+  width: 22px;
+  height: 22px;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.heartFill {
+  width: 21px;
+  height: 18px;
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: normal;
+}
+
+.heartActive .heartFill {
+  opacity: 1;
+}
+
+.heartActive .heartBase {
+  opacity: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wishlistIcon:hover .heartFill,
+  .relatedWishlist:hover .heartFill {
+    opacity: 1;
+  }
+
+  .wishlistIcon:hover .heartBase,
+  .relatedWishlist:hover .heartBase {
+    opacity: 0;
+  }
+}
+
+.pricingSection {
+  margin-top: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.pricingPanel {
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+}
+
+.memberDiscountNote {
+  margin-bottom: 0.65rem;
+}
+
+.priceCardsRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.priceCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  min-height: 132px;
+  padding: 1rem 1.15rem 0.9rem;
+  border: 1.5px solid #e3e3e3;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.priceCard:hover,
+.priceCardActive {
+  background: #1d1d1d;
+  border-color: #1d1d1d;
+}
+
+.priceCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.priceCardLabel {
+  font-size: 14px;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #1d1d1d;
+  transition: color 0.25s ease;
+}
+
+.priceCardMeta {
+  font-size: 13px;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #48494b;
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+
+.priceCardAmount {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.18em;
+  margin: 0.5rem 0;
+}
+
+.priceCardStrike {
+  margin-left: 0.4rem;
+  font-size: 15px;
+  line-height: 1;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 600;
+  color: #9a9a9a;
+  transition: color 0.25s ease;
+}
+
+.priceCardCurrency,
+.priceCardValue {
+  font-size: 28px;
+  line-height: 1;
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 700;
+  color: #1d1d1d;
+  transition: color 0.25s ease;
+}
+
+.priceCardCurrency {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Dirham SVG sits low at large price sizes; align with numeral cap height */
+.priceCardAedSymbol {
+  width: 0.82em !important;
+  height: 0.82em !important;
+}
+
+.priceCardKm {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.2;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 600;
+  color: #48494b;
+  transition: color 0.25s ease;
+}
+
+.oldPrice {
+  display: inline-block;
+}
+
+.priceCard:hover .priceCardLabel,
+.priceCard:hover .priceCardMeta,
+.priceCard:hover .priceCardCurrency,
+.priceCard:hover .priceCardValue,
+.priceCard:hover .priceCardKm,
+.priceCardActive .priceCardLabel,
+.priceCardActive .priceCardMeta,
+.priceCardActive .priceCardCurrency,
+.priceCardActive .priceCardValue,
+.priceCardActive .priceCardKm {
+  color: #fff;
+}
+
+.priceCard:hover .priceCardStrike,
+.priceCardActive .priceCardStrike {
+  color: #b9b9b9;
+}
+
+.moreInfoBar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 132px;
+  padding: 1rem 1.15rem 0.9rem;
+  border: 1.5px solid #e3e3e3;
+  border-radius: 4px;
+  background: #f3f3f3;
+}
+
+.moreInfoTitle {
+  margin: 0 0 0.5rem;
+  font-size: 16px;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #1d1d1d;
+}
+
+.moreInfoList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.moreInfoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  color: #48494b;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.moreInfoItem span {
+  white-space: normal;
+}
+
+.moreInfoTick {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: 0 0 0.9rem;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+@media (max-width: 1366px) {
+  .priceCardLabel,
+  .moreInfoTitle {
+    font-size: 15px;
+  }
+
+  .priceCardMeta,
+  .priceCardKm {
+    font-size: 12px;
+  }
+
+  .priceCardCurrency,
+  .priceCardValue {
+    font-size: 24px;
+  }
+
+  .moreInfoItem {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .priceCardCurrency,
+  .priceCardValue {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 575px) {
+  .priceCardLabel,
+  .moreInfoTitle {
+    font-size: 14px;
+  }
+
+  .priceCardMeta,
+  .priceCardKm {
+    font-size: 11px;
+  }
+
+  .priceCardCurrency,
+  .priceCardValue {
+    font-size: 20px;
+  }
+
+  .moreInfoItem {
+    font-size: 12px;
+  }
+}
+
+.infoSection {
+  margin-top: 2rem;
+  border: 1px solid #ececec;
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+.infoSection h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+}
+
+.descriptionPanel {
+  padding-top: 1.5rem;
+}
+
+.locationSection {
+  margin-top: 3.5rem;
+}
+
+.overviewSection,
+.featuresSection,
+.infoSectionWrap,
+.locationHeaderRow,
+.locationBodyRow {
+  width: min(90%, 100%);
+}
+
+.infoSectionWrap {
+  margin-top: 3.5rem;
+}
+
+.infoSectionWrap .sectionHeading {
+  margin-bottom: 0.75rem;
+}
+
+.locationHeaderRow {
+  padding-bottom: 1.5rem;
+}
+
+.locationHeading {
+  margin: 0;
+  color: #000;
+  text-transform: capitalize;
+  font-size: 2rem;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  line-height: 1.25;
+}
+
+.locationCard {
+  border: 1px solid #ececec;
+  border-radius: 4px;
+  padding: 0.75rem;
+  background: #fff;
+}
+
+.locationInner {
+  margin: 0.5rem;
+}
+
+.locationAddress {
+  margin: 0 0 1rem;
+  color: #1d1d1d;
+  text-transform: capitalize;
+  font-size: 1.125rem;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  line-height: 1.35;
+}
+
+.locationMapWrap {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.locationMapFrame {
+  border: 0;
+  display: block;
+}
+
+.overviewSection {
+  margin-top: 3.5rem;
+}
+
+.overviewSection .sectionHeading {
+  font-size: 1.35rem;
+}
+
+.featuresSection {
+  margin-top: 3.5rem;
+}
+
+.sectionHeading {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #1d1d1d;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+}
+
+.overviewPanel {
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  padding: 2.5rem;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.8rem 2.25rem;
+}
+
+.overviewRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.overviewIconBox {
+  flex: 0 0 50px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ececec;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.overviewIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.overviewText h4 {
+  font-size: 0.875rem;
+  color: #48494b;
+  margin-bottom: 0.15rem;
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+}
+
+.overviewText p {
+  font-size: 1rem;
+  color: #1d1d1d;
+  margin: 0;
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+}
+
+.featureGroups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
+  gap: 1.5rem;
+}
+
+.featureCard {
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  padding: 1rem;
+  background: #fff;
+  min-width: 0;
+}
+
+.featureCard h4 {
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  color: #1d1d1d;
+}
+
+.featureList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  min-width: 0;
+}
+
+.featureItem:last-child {
+  margin-bottom: 0;
+}
+
+.featureItem span {
+  font-size: 1rem;
+  color: #1d1d1d;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.featureIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  object-fit: contain;
+  flex: 0 0 1.25rem;
+}
+
+.addonsCard {
+  grid-column: 1 / -1;
+}
+
+.addonsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.2rem 1rem;
+}
+
+.descriptionWrapper {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.descriptionText,
+.descriptionExtra {
+  color: #1d1d1d;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+}
+
+.descriptionText p,
+.descriptionExtra p {
+  margin: 0 0 0.55rem;
+}
+
+.descriptionText p:last-child,
+.descriptionExtra p:last-child {
+  margin-bottom: 0;
+}
+
+.descriptionText ul,
+.descriptionExtra ul {
+  list-style: disc;
+  padding-left: 1.35rem;
+  margin: 0 0 0.55rem;
+}
+
+.descriptionText li,
+.descriptionExtra li {
+  margin-bottom: 0.45rem;
+}
+
+.descriptionCollapsed {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.25s ease;
+}
+
+.descriptionExpanded {
+  max-height: 150rem;
+  overflow: hidden;
+  opacity: 1;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease;
+}
+
+.readMoreBtn {
+  margin-top: 0.5rem;
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: #1d1d1d;
+  font-size: 0.95rem;
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+  cursor: pointer;
+}
+
+.sideCard {
+  border: 1px solid #ececec;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #fff;
+}
+
+.sideImageWrap {
+  position: relative;
+  width: 100%;
+  height: 10.5rem;
+}
+
+.sideImage {
+  width: 100%;
+  height: 10.5rem;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.sideTitle {
+  margin-top: 0.85rem;
+  margin-bottom: 0.55rem;
+  text-align: center;
+  font-size: 1.05rem;
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  color: #1d1d1d;
+  line-height: 1.15;
+}
+
+.planMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  gap: 0.5rem;
+}
+
+.planMetaLabel {
+  font-size: 0.75rem;
+  color: #7d8187;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+}
+
+.planMetaValue {
+  font-size: 0.92rem;
+  color: #1d1d1d;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  text-align: right;
+}
+
+.monthToggle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: #f3f3f3;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.monthToggle button {
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.toggleActive {
+  background: #1d1d1d !important;
+  color: #fff;
+}
+
+.metric {
+  margin-top: 10px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.ctaStack {
+  margin-top: 0.5rem;
+}
+
+.ctaQuickBtn,
+.ctaCallBtn,
+.ctaWhatsappBtn {
+  border: 1.8px solid #1d1d1d;
+  border-radius: 4px;
+  background: transparent;
+  color: #1d1d1d;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  height: 3rem;
+  padding: 30px;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.ctaQuickBtn {
+  width: 100%;
+  margin-bottom: 0.65rem;
+}
+
+.ctaRow {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.ctaCallBtn,
+.ctaWhatsappBtn {
+  flex: 1;
+  min-width: 0;
+}
+
+.ctaIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaWhatsappBtn {
+  border-color: #25d366;
+  color: #25d366;
+}
+
+.whatsappIconWrap {
+  width: 1.05rem;
+  height: 1.05rem;
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+}
+
+.whatsappIconDefault,
+.whatsappIconHover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.25s ease;
+}
+
+.whatsappIconDefault {
+  opacity: 1;
+}
+
+.whatsappIconHover {
+  opacity: 0;
+}
+
+.ctaQuickBtn:hover,
+.ctaCallBtn:hover {
+  background: #1d1d1d;
+  color: #fff;
+}
+
+.ctaWhatsappBtn:hover {
+  background: #25d366;
+  color: #fff;
+}
+
+.ctaQuickBtn:hover .ctaIcon,
+.ctaCallBtn:hover .ctaIcon {
+  filter: brightness(0) invert(1);
+}
+
+.ctaWhatsappBtn:hover .whatsappIconDefault {
+  opacity: 0;
+}
+
+.ctaWhatsappBtn:hover .whatsappIconHover {
+  opacity: 1;
+}
+
+.sideDivider {
+  margin: 14px 0 12px;
+  border: 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.sideDisclaimer {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #4f5358;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  letter-spacing: 1px;
+}
+
+.googleCard {
+  text-align: center;
+}
+
+.googleCardTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #1d1d1d;
+  font-family: 'Performa Light', 'Times New Roman', serif;
+}
+
+.googleReviewBadge {
+  width: 5.5rem;
+  height: auto;
+}
+
+.googleRatingRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.googleRatingNumber,
+.googleRatingCount {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1d1d1d;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+}
+
+.googleRatingCount {
+  color: #7d8187;
+}
+
+.googleStars {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.googleStars img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.googleViewMore {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 2;
+  color: #1d1d1d;
+  text-decoration: none;
+  font-family: 'Performa Light', 'Times New Roman', serif;
+}
+
+.googleViewMore:hover {
+  text-decoration: underline;
+}
+
+.actionButtons {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.blackBtn,
+.greenBtn {
+  border: none;
+  border-radius: 4px;
+  padding: 11px 16px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.blackBtn {
+  background: #1d1d1d;
+  color: #fff;
+}
+
+.greenBtn {
+  background: #25d366;
+  color: #fff;
+}
+
+.reviewScore {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.relatedSection {
+  padding: 0px 0 70px;
+}
+
+.relatedSection h3 {
+  font-size: 52px;
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  margin-bottom: 20px;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 16px;
+}
+
+.relatedCardCell {
+  display: flex;
+  height: 100%;
+  min-width: 0;
+}
+
+/* Rent cards (CarCard / YachtCard): keep hover elevation strictly black */
+.relatedCardCell > article {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.relatedCardCell > article:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.relatedCardCell > article [data-variant='whatsapp'] {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.22);
+}
+
+.relatedCardCell > article [data-variant='whatsapp']:hover {
+  box-shadow: inset 0 0 0 1px #25d366;
+}
+
+.relatedCard {
+  border: 1px solid rgba(29, 29, 29, 0.1);
+  border-radius: 4px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 12px;
+  width: 100%;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition:
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease;
+}
+
+.relatedCard:focus-visible {
+  outline: 2px solid #1d1d1d;
+  outline-offset: 2px;
+}
+
+.relatedCard:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14);
+  transform: translateY(-4px);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+.relatedImageWrap {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.relatedImageLink {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.relatedImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.relatedCard:hover .relatedImage {
+  transform: scale(1.05);
+}
+
+.relatedWishlist {
+  position: absolute;
+  top: 0.45rem;
+  right: 0.45rem;
+  z-index: 6;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  border: 1px solid #d1d1d1;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  display: grid;
+  place-items: center;
+  padding: 0.35rem;
+  cursor: pointer;
+}
+
+.relatedWishlist img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.relatedBody {
+  padding: 1rem 0.85rem 0;
+}
+
+.relatedInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.relatedBody h4 {
+  font-size: 1.35rem;
+  margin: 0 0 0.25rem;
+  color: #1d1d1d;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+}
+
+.relatedBody p {
+  margin: 0;
+  color: #7a7a7a;
+  font-size: 0.95rem;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  text-transform: capitalize;
+}
+
+.relatedSpecialTag {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border: 1px solid rgba(29, 29, 29, 0.22);
+  border-radius: 999px;
+  background: transparent;
+  color: #1d1d1d;
+  font-size: 0.6875rem;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.relatedSpecs {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+  padding: 0.85rem 0;
+}
+
+.relatedSpecItem {
+  text-align: center;
+  flex: 1;
+}
+
+.relatedSpecItem img {
+  width: 1.6rem;
+  height: 1.6rem;
+  object-fit: contain;
+  margin: 0 auto 0.4rem;
+  display: block;
+}
+
+.relatedSpecItem h6 {
+  font-size: 0.85rem;
+  color: #5f5f5f;
+  margin: 0;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+}
+
+.relatedFooter {
+  padding: 0.75rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.relatedPriceBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.relatedOldPrice {
+  display: block;
+  font-size: 0.6875rem;
+  color: #9a9da2;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.relatedOldPriceSuffix {
+  font-weight: 500;
+}
+
+.relatedPriceMain {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.relatedNewPrice {
+  display: inline-flex;
+  align-items: center;
+  font-size: clamp(1.1rem, 2.2vw, 1.65rem);
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+  color: #0f0f0f;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.relatedPricePeriod {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  color: #4f5256;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.relatedActions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.relatedActionBtn {
+  min-width: 38px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(29, 29, 29, 0.22);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.relatedActionBtn[data-variant='whatsapp'] {
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.22);
+}
+
+.relatedActionBtn img {
+  width: 1.05rem;
+  height: 1.05rem;
+  filter: none;
+  transition: filter 0.3s ease;
+}
+
+.relatedActionBtn[data-variant='call'] img {
+  filter: brightness(0);
+}
+
+.relatedActionBtn[data-variant='call']:hover {
+  background: #1d1d1d;
+}
+
+.relatedActionBtn[data-variant='call']:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.relatedActionBtn[data-variant='whatsapp']:hover {
+  background: #25d366;
+  box-shadow: inset 0 0 0 1px #25d366;
+}
+
+.relatedActionBtn[data-variant='whatsapp']:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.iconBtn {
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #1d1d1d;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.iconBtn:hover {
+  background: #3a3a3a;
+}
+
+.iconBtn img {
+  width: 1.05rem;
+  height: 1.05rem;
+  filter: brightness(0) invert(1);
+}
+
+.relatedWhatsappBtn {
+  background: #25d366;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.modalCard {
+  width: min(520px, 100%);
+  background: #fff;
+  border-radius: 4px;
+  padding: 22px;
+}
+
+.modalCard h3 {
+  margin-bottom: 14px;
+}
+
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+.form input,
+.form textarea {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.error {
+  color: #d44949;
+  font-size: 14px;
+}
+
+.success {
+  color: #2e8b57;
+  font-size: 14px;
+}
+
+.notFoundWrap {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding-top: 110px;
+}
+
+.backHome {
+  margin-top: 12px;
+  text-decoration: underline;
+}
+
+@media (max-width: 1366px) {
+  .relatedSection h3 {
+    font-size: 42px;
+  }
+
+  .mainImageStage {
+    height: min(55vh, 420px);
+    min-height: 280px;
+  }
+
+  .thumbItem {
+    width: 100px;
+    height: 84px;
+  }
+
+  .sideTitle {
+    font-size: 1rem;
+  }
+
+  .ctaQuickBtn,
+  .ctaCallBtn,
+  .ctaWhatsappBtn {
+    height: 2.85rem;
+    font-size: 0.95rem;
+  }
+
+  .googleCardTitle {
+    font-size: 1.35rem;
+  }
+
+  .googleReviewBadge {
+    width: 5.2rem;
+  }
+
+  .googleRatingNumber,
+  .googleRatingCount {
+    font-size: 1.35rem;
+  }
+
+  .googleStars img {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .googleViewMore {
+    font-size: 1rem;
+  }
+
+  .locationHeading {
+    font-size: 1.625rem;
+  }
+
+  .locationAddress {
+    font-size: 0.875rem;
+  }
+
+  .locationInner {
+    margin: 2rem;
+  }
+}
+
+@media (max-width: 1199px) {
+  .container {
+    width: min(100%, calc(100% - 32px));
+  }
+
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .sideCol {
+    position: static;
+    align-self: auto;
+  }
+
+  .stickyCardWrap,
+  .stuck,
+  .bottomReached {
+    position: static;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    width: auto !important;
+    z-index: auto;
+  }
+
+  .relatedGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .overviewGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .addonsList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .mainImageStage {
+    height: min(55vh, 380px);
+    min-height: 320px;
+  }
+
+  .thumbItem {
+    width: 88px;
+    height: 72px;
+  }
+
+  .priceCardsRow,
+  .pricingGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .priceCard {
+    min-height: 120px;
+    padding: 0.85rem 0.75rem;
+  }
+
+  .moreInfoBar {
+    min-height: 120px;
+    padding: 0.85rem 0.75rem;
+  }
+
+  .sideTitle {
+    font-size: 0.98rem;
+  }
+
+  .ctaQuickBtn,
+  .ctaCallBtn,
+  .ctaWhatsappBtn {
+    height: 2.75rem;
+    font-size: 0.92rem;
+    gap: 0.45rem;
+  }
+
+  .ctaIcon,
+  .whatsappIconWrap {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .googleCardTitle {
+    font-size: 1.2rem;
+  }
+
+  .googleReviewBadge {
+    width: 4.8rem;
+  }
+
+  .googleRatingNumber,
+  .googleRatingCount {
+    font-size: 1.2rem;
+  }
+
+  .googleStars img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .googleViewMore {
+    font-size: 0.95rem;
+  }
+
+  .locationHeaderRow,
+  .locationBodyRow {
+    width: 100%;
+  }
+
+  .locationHeading {
+    font-size: 1.375rem;
+  }
+
+  .locationInner {
+    margin: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .productDetail {
+    padding: 5.5rem 0 2rem;
+  }
+
+  .productHeader {
+    margin-bottom: 1rem;
+    padding: 0.5rem 0 1rem;
+  }
+
+  .sectionHeading {
+    font-size: 28px;
+  }
+
+  .mainImageWrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mainImageStage {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    background: #f7f7f7;
+  }
+
+  .mainImage {
+    height: auto;
+    max-height: min(58vh, 440px);
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .thumbRail {
+    position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    padding-bottom: 0;
+    margin-top: 0;
+  }
+
+  .galleryThumbSection {
+    position: static;
+    align-items: flex-end;
+    pointer-events: auto;
+    margin-top: 0.5rem;
+    opacity: 1;
+    transform: none;
+  }
+
+  .thumbItem {
+    width: 76px;
+    height: 62px;
+  }
+
+  .priceCardsRow,
+  .pricingGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .priceCard {
+    min-height: 110px;
+  }
+
+  .moreInfoBar {
+    min-height: 110px;
+  }
+
+  .sideCard {
+    padding: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .sideImage {
+    height: 150px;
+  }
+
+  .sideTitle {
+    font-size: 0.95rem;
+  }
+
+  .ctaQuickBtn,
+  .ctaCallBtn,
+  .ctaWhatsappBtn {
+    height: 2.6rem;
+    font-size: 0.88rem;
+  }
+
+  .sideDisclaimer {
+    font-size: 0.72rem;
+  }
+
+  .googleCardTitle {
+    font-size: 1.05rem;
+    gap: 0.35rem;
+  }
+
+  .googleReviewBadge {
+    width: 4.2rem;
+  }
+
+  .googleRatingRow {
+    gap: 0.35rem;
+  }
+
+  .googleRatingNumber,
+  .googleRatingCount {
+    font-size: 1rem;
+  }
+
+  .googleStars img {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+
+  .googleViewMore {
+    font-size: 0.9rem;
+  }
+
+  .overviewSection {
+    margin-top: 2rem;
+    width: 100%;
+  }
+
+  .overviewSection .sectionHeading {
+    margin-bottom: 1rem;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .overviewPanel {
+    padding: 1.25rem 1rem;
+    border-radius: 8px;
+    border-color: #ececec;
+  }
+
+  .overviewGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 0.875rem;
+  }
+
+  .overviewRow {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .overviewIconBox {
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+  }
+
+  .overviewIcon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .overviewText {
+    min-width: 0;
+  }
+
+  .overviewText h4 {
+    font-family: 'RedHat Regular', 'Red Hat Display', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: #48494b;
+    margin-bottom: 0.2rem;
+    line-height: 1.25;
+  }
+
+  .overviewText p {
+    font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+
+  .addonsList {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .featureGroups {
+    grid-template-columns: 1fr;
+  }
+
+  .featureCard h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .relatedSection h3 {
+    font-size: 34px;
+  }
+
+  .locationSection {
+    margin-top: 2rem;
+  }
+
+  .locationHeaderRow {
+    padding-bottom: 0.875rem;
+  }
+
+  .locationHeading {
+    font-size: 1.25rem;
+  }
+
+  .locationCard {
+    padding: 0.625rem;
+  }
+
+  .locationInner {
+    margin: 0.875rem;
+  }
+
+  .locationAddress {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+}

@@ -1,0 +1,629 @@
+.introOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.44);
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
+}
+
+.introPosterWrap,
+.introPoster,
+.introVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.introPosterWrap {
+  cursor: pointer;
+}
+
+.home {
+  height: 100vh;
+}
+
+.bannerPadding {
+  padding: 100px 28px 28px;
+}
+
+@media (max-width: 1200px) {
+  .bannerPadding {
+    padding: 100px 24px 24px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .bannerPadding {
+    padding: 72px 20px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bannerPadding {
+    padding: 68px 16px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bannerPadding {
+    padding: 60px 14px 14px;
+  }
+}
+
+.homeContainer {
+  position: relative;
+  height: 100%;
+}
+
+.hiddenSeo {
+  display: none;
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroVideo {
+  background: #000;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  contain: strict;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.border20 {
+  border-radius: 4px;
+}
+
+.csvideo {
+  cursor: pointer;
+}
+
+/* ─── Search panel wrapper ─── */
+.searchWrapper {
+  position: absolute;
+  bottom: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(814px, 94vw);
+  z-index: 2;
+}
+
+.searchPanel {
+  position: relative;
+  width: 100%;
+}
+
+.glassSurface {
+  border: 1px solid rgba(29, 29, 29, 0.25);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Three separate glass cards: tabs, search input, suggestions */
+.searchPanelUnified {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Top toolbar row — its own glass card */
+.tabsToolbar {
+  composes: glassSurface;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  padding: 0;
+  border-radius: 4px;
+}
+
+.tabsRowInline {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.tabBtnInline {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: #1d1d1d;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.tabBtnInlineDivider {
+  box-shadow: inset -1px 0 0 0 rgba(29, 29, 29, 0.25);
+}
+
+.tabBtnInline {
+  position: relative;
+}
+
+.tabBtnInline:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: rgba(29, 29, 29, 0.2);
+  z-index: 1;
+}
+
+.tabBtnInline:hover {
+  opacity: 0.72;
+}
+
+.tabBtnInlineActive {
+  opacity: 1;
+}
+
+.toolbarSearchBtn {
+  flex: 0 0 auto;
+  align-self: stretch;
+  margin: 2px 2px 2px 0;
+  padding: 0 56px;
+  border: none;
+  border-radius: 4px;
+  background: #1d1d1d;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: background 0.2s ease;
+}
+
+.toolbarSearchBtn:hover {
+  background: #000000;
+}
+
+.mobileSearchTrigger {
+  composes: glassSurface;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Search input is its own glass card; suggestions float below as connected card */
+.searchInputGroup {
+  composes: glassSurface;
+  border-radius: 4px;
+  position: relative;
+}
+
+/* Flatten bottom corners when suggestions are open so cards look joined */
+.searchInputGroup:hover,
+.searchInputGroup:focus-within {
+  border-radius: 4px 4px 0 0;
+}
+
+.searchInputGroup:hover .suggestionBody,
+.searchInputGroup:focus-within .suggestionBody {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.suggestionBody {
+  composes: glassSurface;
+  position: absolute;
+  top: calc(100% + 1px);
+  left: -1px;
+  right: -1px;
+  padding: 0 24px 24px;
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.searchInputRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 24px;
+}
+
+/* Search input row inherits glass from .searchInputGroup */
+.desktopOnly .searchInputRow {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Restore divider in the full-screen mobile overlay */
+.mobileSearchOverlay .searchInputRow {
+  border-bottom: 1px solid rgba(29, 29, 29, 0.1);
+}
+
+.searchInputIcon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: rgba(29, 29, 29, 0.5);
+}
+
+.inputFocus,
+.inputPlaceholder {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: clamp(18px, 1.9vw, 20px);
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #1d1d1d;
+}
+
+.inputPlaceholder {
+  display: block;
+  color: rgba(29, 29, 29, 0.45);
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inputFocus::placeholder {
+  color: rgba(29, 29, 29, 0.45);
+  opacity: 1;
+}
+
+.inputFocus::-webkit-search-cancel-button,
+.inputFocus::-webkit-search-decoration,
+.inputFocus::-webkit-search-results-button,
+.inputFocus::-webkit-search-results-decoration {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/* Legacy aliases — kept for any stray references */
+.searchPanelBox,
+.searchCardWrap,
+.searchWrapperContent,
+.searchRow,
+.inputWrapper,
+.searchButton,
+.searchDropdown,
+.searchDropdownOpen {
+  /* unused in new layout */
+}
+
+.tabBtn,
+.tabBtnActive,
+.tabsRow {
+  /* unused in new layout */
+}
+
+/* ─── Desktop / mobile visibility ─── */
+.desktopOnly {
+  display: block;
+  position: relative;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+.desktopTabs {
+  display: none;
+}
+
+.mobileTabs {
+  display: none;
+}
+
+/* ─── Dropdown content styles ─── */
+.searchResults {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-top: 16px;
+}
+
+.searchItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownHeading {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-family: 'RedHat Bold', Arial, sans-serif;
+  font-weight: 900;
+  color: #1d1d1d;
+}
+
+.searchItemButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: rgba(29, 29, 29, 0.88);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.searchItemButton:hover {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.emptyState {
+  padding: 5px 0;
+  font-size: 15px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: rgba(29, 29, 29, 0.55);
+}
+
+.quickLists {
+  padding-top: 22px;
+}
+
+.quickListSpacing {
+  margin-top: 22px;
+}
+
+.linkGrid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.suggestionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: auto;
+  padding: 4px 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-weight: 600;
+  color: #1d1d1d;
+  transition: opacity 0.2s ease;
+}
+
+.suggestionLink span {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.suggestionLink svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  opacity: 0.65;
+}
+
+.suggestionLink:hover {
+  opacity: 0.72;
+}
+
+.chips,
+.chip {
+  /* legacy pill chips — replaced by linkGrid */
+}
+
+/* ─── Mobile overlay ─── */
+.mobileSearchOverlay {
+  display: none;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1680px) {
+  .searchWrapper {
+    width: min(714px, 94vw);
+  }
+
+  .tabBtnInline {
+    padding: 14px 4px;
+    font-size: 15px;
+  }
+
+  .toolbarSearchBtn {
+    padding: 0 75px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1366px) {
+  .searchWrapper {
+    width: min(680px, 94vw);
+  }
+
+  .suggestionBody {
+    padding: 0 22px 20px;
+  }
+
+  .searchInputRow {
+    padding: 12px 22px;
+  }
+}
+
+@media (max-width: 991px) {
+  .home {
+    height: 75vh;
+  }
+
+  .bannerPadding {
+    padding: 60px 16px 16px;
+  }
+
+  .searchWrapper {
+    top: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    width: 90%;
+  }
+
+  .tabBtnInline {
+    flex: 1;
+    font-size: 12px;
+    padding: 14px 4px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .toolbarSearchBtn {
+    flex: 0 0 auto;
+    align-self: stretch;
+    margin: 4px 4px 4px 0;
+    padding: 0 18px;
+    font-size: 13px;
+  }
+
+  .linkGrid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .inputFocus,
+  .inputPlaceholder {
+    font-size: 15px;
+  }
+
+  .desktopOnly {
+    display: none;
+  }
+
+  .mobileOnly {
+    display: block;
+  }
+
+  /* full-screen search overlay */
+  .mobileSearchOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .mobileClose {
+    margin-left: auto;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-family: 'RedHat SemiBold', Arial, sans-serif;
+    font-weight: 600;
+    color: #1d1d1d;
+    cursor: pointer;
+    padding: 4px 0;
+  }
+
+  .mobileSearchOverlay .searchInputRow {
+    border: 1px solid rgba(29, 29, 29, 0.2);
+    border-radius: 4px;
+    padding: 12px 16px;
+  }
+
+  .mobileSearchOverlay .toolbarSearchBtn {
+    width: 100%;
+    align-self: unset;
+    margin: 10px 0 0;
+    padding: 14px;
+    border-radius: 4px;
+    font-size: 15px;
+  }
+
+  .mobileDivider {
+    border: 0;
+    border-top: 1px solid #dcdcdc;
+    margin: 16px 0;
+  }
+
+  .mobileInner {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home {
+    height: 65vh;
+  }
+
+  .searchWrapper {
+    width: 95%;
+  }
+
+  .tabBtnInline {
+    font-size: 10px;
+    padding: 12px 2px;
+    line-height: 1.2;
+  }
+
+  .toolbarSearchBtn {
+    padding: 0 14px;
+    font-size: 11px;
+    margin: 3px 3px 3px 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .tabBtnInline {
+    font-size: 9px;
+    padding: 10px 2px;
+  }
+
+  .toolbarSearchBtn {
+    padding: 0 10px;
+    font-size: 10px;
+  }
+}

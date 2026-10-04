@@ -1,0 +1,62 @@
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  /* Above the intro splash overlay (up to z-index 10002 in siteIntro.module.css) so it's
+     never silently hidden behind the intro video on a visitor's first page load. */
+  z-index: 20000;
+  max-width: min(92vw, 28rem);
+  padding: 0.85rem 1.1rem;
+  border-radius: 8px;
+  background: #1d1d1d;
+  color: #fff;
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+  transform: translate(-50%, 120%);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.28s ease,
+    opacity 0.28s ease;
+}
+
+.copy {
+  margin: 0;
+  display: inline;
+  line-height: 1.4;
+}
+
+.toastVisible {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.loginLink {
+  display: inline;
+  color: #fff;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.loginLink:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 767px) {
+  .toast {
+    width: max-content;
+    max-width: calc(100vw - 1.25rem);
+    padding: 0.7rem 0.85rem;
+    font-size: 0.78rem;
+  }
+
+  .copy {
+    white-space: nowrap;
+  }
+}

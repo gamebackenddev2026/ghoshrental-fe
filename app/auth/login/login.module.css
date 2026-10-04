@@ -1,0 +1,417 @@
+.section {
+  --auth-pt: 7.5rem;
+  --auth-pb: 2.5rem;
+  --auth-px: 1.25rem;
+  min-height: calc(100dvh - 5rem);
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: var(--auth-pt) var(--auth-px) var(--auth-pb);
+  box-sizing: border-box;
+}
+
+.container {
+  width: min(100%, 36rem);
+  margin: 0 auto;
+}
+
+.headingWrap {
+  text-align: center;
+  padding-top: 0;
+  margin-bottom: 1.75rem;
+}
+
+/* Matches reference: Performa Light .size52 */
+.heading {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #1d1d1d;
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+@media (max-width: 1680px) {
+  .heading {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .heading {
+    font-size: 34px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .heading {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .heading {
+    font-size: 20px;
+  }
+}
+
+.subheading {
+  margin: 0.5rem auto 0;
+  max-width: 30rem;
+  color: #3a3d42;
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.formBlock {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #e5e6e8;
+  border-radius: 4px;
+  background: #ffffff;
+  padding: 1.75rem 1.85rem 1.5rem;
+}
+
+.success,
+.errorBanner {
+  margin: 0 0 1rem;
+  border-radius: 4px;
+  padding: 0.65rem 0.85rem;
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.success {
+  color: #0c5722;
+  background: #d7f4df;
+  border: 1px solid #9ddfb0;
+}
+
+.errorBanner {
+  color: #9d1f1f;
+  background: #ffe3e3;
+  border: 1px solid #ffc5c5;
+}
+
+.fieldGroup {
+  margin-bottom: 1.1rem;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  color: #1d1d1d;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.input {
+  width: 100%;
+  height: 2.75rem;
+  border: 1px solid #d8dbe0;
+  border-radius: 4px;
+  background: #fff;
+  color: #17181b;
+  padding: 0 1rem;
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input:focus {
+  border-color: #8e949e;
+  box-shadow: 0 0 0 3px rgba(29, 29, 29, 0.08);
+}
+
+.input::placeholder {
+  color: #6a6f76;
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+}
+
+.passwordWrap {
+  position: relative;
+}
+
+.passwordWrap .input {
+  padding-right: 2.75rem;
+}
+
+.eyeButton {
+  position: absolute;
+  top: 50%;
+  right: 0.65rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  color: #5f6672;
+  cursor: pointer;
+  padding: 0;
+}
+
+.eyeButton svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.fieldError {
+  margin: 0.4rem 0 0;
+  color: #c1121f;
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.actionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.15rem 0 1.15rem;
+}
+
+.remember {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #2f3238;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.9375rem;
+}
+
+.remember input {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #7e8590;
+  border-radius: 4px;
+  appearance: none;
+  background: transparent;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.remember input:checked {
+  background: #1d1d1d;
+  box-shadow: inset 0 0 0 0.12rem #fff;
+  accent-color: #1d1d1d;
+}
+
+.forgot {
+  color: #2f3238;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+/* Pill button — white fill, black outline (reference) */
+.submit {
+  width: 100%;
+  border: 1px solid #1d1d1d;
+  outline: none;
+  background: #ffffff;
+  color: #1d1d1d;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    opacity 0.2s ease;
+  padding: 0.8rem 1.25rem;
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+}
+
+.submit:hover:not(:disabled) {
+  background: #1d1d1d;
+  color: #fff;
+}
+
+.submit:disabled {
+  opacity: 0.58;
+  cursor: not-allowed;
+}
+
+.socialWrapper {
+  margin-top: 1.25rem;
+}
+
+.socialDivider {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0.85rem;
+  color: #9aa1ac;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.socialDivider::before,
+.socialDivider::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid #e1e3e7;
+}
+
+.socialDivider span {
+  padding: 0 0.75rem;
+  white-space: nowrap;
+}
+
+.socialButtons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.socialButton {
+  width: 100%;
+  background: #ffffff;
+  text-transform: capitalize;
+  border: 1px solid #9da3ae;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  padding: 0.65rem 0.85rem;
+  color: #1d1d1d;
+  font-family: 'RedHat SemiBold', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.9375rem;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.socialButton img {
+  height: 1.1rem;
+  width: auto;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.appleButton img {
+  height: 1.2rem;
+  transform: none;
+}
+
+.socialButton:hover {
+  background: #000;
+  color: #fff;
+}
+
+.socialButton:hover img {
+  filter: invert(1);
+}
+
+.registerText {
+  margin: 1rem 0 0;
+  text-align: center;
+  color: #3a3d42;
+  font-family: 'RedHat Regular', 'Red Hat Display', Arial, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+.registerLink {
+  font-family: 'RedHat Bold', 'Red Hat Display', Arial, sans-serif;
+  font-weight: 700;
+  color: #1d1d1d;
+  text-decoration: none;
+}
+
+.registerLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1680px) {
+  .section {
+    --auth-pt: 7.25rem;
+  }
+}
+
+@media (max-width: 1440px) {
+  .section {
+    --auth-pt: 7rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .section {
+    --auth-pt: 6.75rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    --auth-pt: 6.5rem;
+    min-height: calc(100dvh - 4.75rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    --auth-pt: 6.25rem;
+    --auth-px: 1rem;
+    align-items: flex-start;
+  }
+
+  .formBlock {
+    padding: 1.35rem 1.15rem 1.25rem;
+  }
+
+  .actionsRow {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  .socialButtons {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    --auth-pt: 6rem;
+    --auth-pb: 2rem;
+    min-height: calc(100dvh - 4.5rem);
+  }
+
+  .headingWrap {
+    margin-bottom: 1.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    --auth-pt: 5.5rem;
+    --auth-px: 0.85rem;
+  }
+}

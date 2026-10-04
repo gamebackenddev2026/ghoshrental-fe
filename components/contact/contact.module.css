@@ -1,0 +1,907 @@
+/* Contact page — matches ghostrentals.com/contact reference
+   (thin serif hero, inset fields, bordered contact card, map). */
+
+.wrap {
+  min-height: 100vh;
+  background: #fff;
+  color: #1d1d1d;
+  padding: 10rem 7rem 5rem;
+}
+
+@media (max-width: 1920px) {
+  .wrap {
+    padding: 10.2rem 5rem 8rem;
+  }
+}
+
+@media (max-width: 1440px) {
+  .wrap {
+    padding: 8.5rem 4rem 4rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .wrap {
+    padding: 8rem 3rem 3.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrap {
+    padding: 7.5rem 2rem 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 6.5rem 1.15rem 2.25rem;
+  }
+}
+
+.inner {
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+/* ───────────── Hero (big thin serif, centered) ───────────── */
+.hero {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    margin-bottom: 2rem;
+  }
+
+  .heroTitle {
+    font-size: 2.35rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 100%;
+    padding: 0 0.25rem;
+  }
+}
+
+.heroTitle {
+  font-family: 'Performa Light', 'Times New Roman', serif;
+  font-size: 3.8rem;
+  font-weight: 300;
+  line-height: 1.3;
+  color: #1d1d1d;
+  text-transform: capitalize;
+  -webkit-font-smoothing: antialiased;
+}
+
+.subtitle {
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+  font-size: 1.15rem;
+  color: #5f5f5f;
+  max-width: 44rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Tablet typography (769px–1199px) */
+@media (max-width: 1199px) and (min-width: 769px) {
+  .hero {
+    margin-bottom: 3rem;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+    line-height: 1.25;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    max-width: 38rem;
+  }
+
+  .form {
+    gap: 1.35rem;
+  }
+
+  .insetLabel {
+    font-size: 0.9375rem;
+  }
+
+  .insetInput,
+  .dialCode,
+  .phoneInput {
+    font-size: 0.9rem;
+  }
+
+  .insetTextareaField {
+    font-size: 0.9rem;
+    min-height: 12rem;
+  }
+
+  .error {
+    font-size: 0.9375rem;
+  }
+
+  .submit {
+    padding: 0.95rem 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  .messageBanner {
+    font-size: 0.875rem;
+  }
+
+  .sideCard {
+    padding: 1.65rem 1.5rem 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.4rem;
+  }
+
+  .sideLead {
+    font-size: 1rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .detailRow {
+    margin-bottom: 1.65rem;
+  }
+
+  .detailLabel,
+  .detailValue {
+    font-size: 0.9375rem;
+  }
+
+  .followLabel {
+    font-size: 1.1rem;
+  }
+
+  .mapSection {
+    margin-top: 3.5rem;
+  }
+
+  .mapFrame {
+    min-height: 280px;
+  }
+}
+
+/* Stacked tablet (769px–992px) — slightly tighter type */
+@media (max-width: 992px) and (min-width: 769px) {
+  .hero {
+    margin-bottom: 2.5rem;
+  }
+
+  .heroTitle {
+    font-size: 2.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+
+  .sideLead {
+    font-size: 0.95rem;
+  }
+
+  .submit {
+    padding: 0.85rem 2.25rem;
+    font-size: 1rem;
+  }
+}
+
+/* ───────────── 2-column grid (form | contact card) ───────────── */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 2.5rem 5rem;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .grid {
+    gap: 2.5rem 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* ───────────── Form ───────────── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 575px) {
+  .row2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Inset-label fields (label inside the bordered box) */
+.insetField {
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 0.55rem 1rem 0.65rem;
+  background: #fff;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.insetField:focus-within {
+  border-color: #1d1d1d;
+  box-shadow: 0 0 0 1px #1d1d1d;
+}
+
+.insetLabel {
+  display: block;
+  font-family: 'RedHat Medium', 'Red Hat Display', sans-serif;
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin: 0 0 0.15rem;
+  line-height: 1.3;
+}
+
+.insetInput {
+  width: 100%;
+  border: none;
+  padding: 0;
+  font-family: 'RedHat Regular', 'Red Hat Display', sans-serif;
+  font-size: 0.95rem;
+  color: #1d1d1d;
+  background: transparent;
+  outline: none;
+  line-height: 2.5;
+}
+
+.insetTextarea {
+  padding: 0.75rem 1rem 0.85rem;
+}
+
+.insetTextareaField {
+  width: 100%;
+  min-height: 14rem;
+  border: none;
+  padding: 0.25rem 0 0;
+  font-family: 'RedHat Regular', 'Red Hat Display', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #1d1d1d;
+  background: transparent;
+  outline: none;
+  resize: vertical;
+}
+
+/* Phone row with country selector */
+.phoneRow {
+  display: flex;
+  align-items: center;
+  min-height: 1.5rem;
+}
+
+.phoneCountry {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  padding-right: 0.65rem;
+  margin-right: 0.65rem;
+  border-right: 1px solid #e4e4e4;
+}
+
+.flag {
+  display: block;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.dialCode {
+  font-family: 'RedHat Regular', 'Red Hat Display', sans-serif;
+  font-size: 0.95rem;
+  color: #1d1d1d;
+}
+
+.phoneChevron {
+  opacity: 0.55;
+  flex-shrink: 0;
+}
+
+.phoneInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  padding: 0;
+  font-family: 'RedHat Regular', 'Red Hat Display', sans-serif;
+  font-size: 0.95rem;
+  color: #1d1d1d;
+  background: transparent;
+  outline: none;
+  line-height: 2.5;
+}
+
+.phoneInput::placeholder {
+  color: #b0b0b0;
+}
+
+.error {
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  font-size: 1rem;
+  color: #ff002f;
+  margin: 0.35rem 0 0;
+  padding-left: 0.15rem;
+}
+
+/* Pill CTA — black outline on white, inverts on hover */
+.submit {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+  padding: 1.1rem 3rem;
+  background: #fff;
+  color: #1d1d1d;
+  border: 0.15rem solid #1d1d1d;
+  border-radius: 4px;
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    opacity 0.2s ease;
+}
+
+.submit:hover:not(:disabled) {
+  background: #1d1d1d;
+  color: #fff;
+}
+
+.submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.messageBanner {
+  padding: 0.9rem 1rem;
+  border-radius: 4px;
+  font-family: 'RedHat Regular', 'Red Hat Display', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.messageBanner.success {
+  background: #e8f5e9;
+  color: #1b5e20;
+  border: 1px solid #a5d6a7;
+}
+
+.messageBanner.danger {
+  background: #ffebee;
+  color: #b71c1c;
+  border: 1px solid #ef9a9a;
+}
+
+/* ───────────── Side card (contact details) ───────────── */
+.sideCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 2rem 1.75rem 1.75rem;
+  background: #fff;
+  height: calc(100% - 6rem);
+}
+
+@media (max-width: 992px) {
+  .sideCard {
+    height: auto;
+  }
+}
+
+@media (max-width: 575px) {
+  .sideCard {
+    padding: 1.25rem 1rem 1rem;
+  }
+}
+
+.cardTitle {
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin: 0 0 0.65rem;
+  color: #1d1d1d;
+  text-transform: capitalize;
+  line-height: 1.2;
+}
+
+.sideLead {
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.detailRow {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.detailIcon {
+  flex-shrink: 0;
+  color: #1d1d1d;
+  margin-top: 0.1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.detailIcon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.detailLabel {
+  font-family: 'RedHat Bold', 'Red Hat Display', sans-serif;
+  font-size: 1rem;
+  margin: 0 0 0.25rem;
+}
+
+.detailValue {
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #1d1d1d;
+  margin: 0;
+  display: inline-block;
+  text-decoration: none;
+}
+
+a.detailValue:hover {
+  text-decoration: underline;
+}
+
+.followBlock {
+  margin-top: 1.75rem;
+  padding-top: 0.5rem;
+}
+
+.followLabel {
+  font-family: 'RedHat SemiBold', 'Red Hat Display', sans-serif;
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem;
+}
+
+.socialRowIconsOnly {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.socialIconOnly {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  color: #1d1d1d;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.socialIconOnly img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  filter: brightness(0);
+  transition: filter 0.2s ease;
+}
+
+/* ───────────── Google map — full width under grid ───────────── */
+.mapSection {
+  margin-top: 4rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .mapSection {
+    margin-top: 3rem;
+  }
+}
+
+.mapFrame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #f5f5f5;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+  aspect-ratio: 21 / 6.5;
+  min-height: 300px;
+}
+
+@media (max-width: 768px) {
+  .mapFrame {
+    aspect-ratio: 4 / 3;
+    min-height: 260px;
+  }
+}
+
+.mapFrame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ───────────── Mobile typography & spacing ───────────── */
+@media (max-width: 768px) {
+  .form {
+    gap: 1.15rem;
+  }
+
+  .insetField {
+    padding: 0.45rem 0.85rem 0.5rem;
+  }
+
+  .insetLabel {
+    font-size: 0.875rem;
+  }
+
+  .insetInput,
+  .dialCode,
+  .phoneInput {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .insetTextareaField {
+    min-height: 9.5rem;
+    font-size: 0.875rem;
+  }
+
+  .insetTextarea {
+    padding: 0.55rem 0.85rem 0.65rem;
+  }
+
+  .error {
+    font-size: 0.8125rem;
+  }
+
+  .submit {
+    width: 100%;
+    align-self: stretch;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  .messageBanner {
+    font-size: 0.8125rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .cardTitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sideLead {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1.15rem;
+  }
+
+  .detailRow {
+    margin-bottom: 1.35rem;
+    gap: 0.65rem;
+  }
+
+  .detailIcon {
+    width: 1.85rem;
+    height: 1.85rem;
+  }
+
+  .detailIcon svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .detailLabel,
+  .detailValue {
+    font-size: 0.875rem;
+  }
+
+  .followBlock {
+    margin-top: 1.25rem;
+  }
+
+  .followLabel {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .socialIconOnly {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .socialIconOnly img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap {
+    padding: 6.25rem 1rem 2rem;
+  }
+
+  .hero {
+    margin-bottom: 1.65rem;
+  }
+
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+
+  .grid {
+    gap: 1.75rem;
+  }
+
+  .form {
+    gap: 1rem;
+  }
+
+  .submit {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .cardTitle {
+    font-size: 1.0625rem;
+  }
+
+  .sideLead {
+    font-size: 0.8125rem;
+  }
+
+  .detailLabel,
+  .detailValue {
+    font-size: 0.8125rem;
+  }
+
+  .mapSection {
+    margin-top: 2rem;
+  }
+
+  .mapFrame {
+    min-height: 220px;
+  }
+}
+
+/* Narrow viewports (500px–700px) */
+@media (max-width: 768px) and (min-width: 577px) {
+  .wrap {
+    padding: 6rem 1.05rem 2rem;
+  }
+
+  .hero {
+    margin-bottom: 1.75rem;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .grid {
+    gap: 1.5rem;
+  }
+
+  .form {
+    gap: 1.05rem;
+  }
+
+  .insetLabel {
+    font-size: 0.85rem;
+  }
+
+  .insetInput,
+  .dialCode,
+  .phoneInput {
+    font-size: 0.85rem;
+  }
+
+  .insetTextareaField {
+    font-size: 0.85rem;
+    min-height: 9rem;
+  }
+
+  .error {
+    font-size: 0.8rem;
+  }
+
+  .submit {
+    padding: 0.7rem 1.35rem;
+    font-size: 0.9rem;
+  }
+
+  .messageBanner {
+    font-size: 0.8rem;
+  }
+
+  .sideCard {
+    padding: 1.15rem 0.95rem 0.95rem;
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+
+  .sideLead {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .detailRow {
+    margin-bottom: 1.2rem;
+  }
+
+  .detailLabel,
+  .detailValue {
+    font-size: 0.85rem;
+  }
+
+  .followLabel {
+    font-size: 0.9rem;
+  }
+
+  .detailIcon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .detailIcon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .mapSection {
+    margin-top: 2.25rem;
+  }
+
+  .mapFrame {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 576px) and (min-width: 500px) {
+  .heroTitle {
+    font-size: 1.65rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .insetLabel {
+    font-size: 0.8375rem;
+  }
+
+  .insetInput,
+  .dialCode,
+  .phoneInput,
+  .insetTextareaField {
+    font-size: 0.8375rem;
+  }
+
+  .submit {
+    padding: 0.62rem 1.2rem;
+    font-size: 0.8375rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .sideLead {
+    font-size: 0.7875rem;
+  }
+
+  .detailLabel,
+  .detailValue {
+    font-size: 0.7875rem;
+  }
+
+  .followLabel {
+    font-size: 0.85rem;
+  }
+
+  .mapFrame {
+    min-height: 210px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 5.75rem 0.85rem 1.75rem;
+  }
+
+  .heroTitle {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .insetLabel {
+    font-size: 0.8125rem;
+  }
+
+  .insetInput,
+  .dialCode,
+  .phoneInput,
+  .insetTextareaField {
+    font-size: 0.8125rem;
+  }
+
+  .insetTextareaField {
+    min-height: 8.5rem;
+  }
+
+  .submit {
+    padding: 0.6rem 1.15rem;
+    font-size: 0.8125rem;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+  }
+
+  .followLabel {
+    font-size: 0.875rem;
+  }
+}

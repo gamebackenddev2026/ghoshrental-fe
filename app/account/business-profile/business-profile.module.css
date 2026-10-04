@@ -1,0 +1,78 @@
+.statusCard {
+  padding: 1rem 1.1rem;
+  border-radius: 4px;
+  border: 1px solid #e8e9ec;
+  background: #f8f8fa;
+  margin-bottom: 1.25rem;
+}
+
+.statusCard p {
+  margin: 0.5rem 0 0;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.875rem;
+  color: #3a3c42;
+}
+
+.statusHint {
+  color: #7c808a !important;
+  font-size: 0.8rem !important;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 0.75rem;
+}
+
+.badgeApproved {
+  background: #e6f7ec;
+  color: #0d6b2a;
+}
+
+.badgePending {
+  background: #fff6e0;
+  color: #92650a;
+}
+
+.badgeRejected {
+  background: #fef2f2;
+  color: #9d1f1f;
+}
+
+.fileRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.fileBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid #dcdee2;
+  border-radius: 4px;
+  background: #fff;
+  color: #1a1b1f;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 0.825rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.fileName {
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 0.8rem;
+  color: #7c808a;
+}
+
+.fileInputHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}

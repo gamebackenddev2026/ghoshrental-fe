@@ -1,0 +1,459 @@
+/* Search date/time — premium sidebar picker (calendar + time together) */
+
+.datetimeField {
+  position: relative;
+  width: 100%;
+}
+
+.datetimeField.active {
+  z-index: 1001;
+}
+
+.trigger {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 36px 10px 12px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 14px;
+  color: #141414;
+  background: #fff;
+  min-height: 48px;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.trigger:hover {
+  border-color: #b8b8b8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.trigger:focus {
+  outline: none;
+  border-color: #1d1d1d;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.triggerText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  min-width: 0;
+  padding-right: 4px;
+}
+
+.triggerDateLine {
+  font-size: 13px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #1a1a1a;
+  line-height: 1.25;
+}
+
+.triggerTimeLine {
+  font-size: 12px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #7a7268;
+  letter-spacing: 0.04em;
+}
+
+.triggerPlaceholder {
+  font-size: 14px;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  color: #9a9288;
+}
+
+.trigger[data-placeholder='true'] .triggerPlaceholder {
+  color: #9a9288;
+}
+
+.triggerArrow {
+  width: 14px;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+  z-index: 4;
+  opacity: 0.65;
+}
+
+.triggerArrow[data-open='true'] {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.fieldHint {
+  margin: 6px 0 0;
+  font-size: 12px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #a67c52;
+  line-height: 1.35;
+}
+
+/* Fixed panel — positioned by JS */
+.dropdownRoot {
+  position: fixed;
+  z-index: 4000;
+  background: linear-gradient(165deg, #fdfcfa 0%, #f7f4ef 55%, #f3efe8 100%);
+  border-radius: 4px;
+  padding: 16px 18px 14px;
+  box-shadow:
+    0 32px 90px rgba(0, 0, 0, 0.12),
+    0 12px 36px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(184, 160, 120, 0.22);
+  min-width: min(100vw - 24px, 320px);
+  max-width: min(100vw - 16px, 520px);
+}
+
+.panelHeader {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.panelKicker {
+  margin: 0 0 4px;
+  font-size: 10px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a8278;
+}
+
+.panelTitle {
+  margin: 0;
+  font-size: 15px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #121212;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.quickRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.quickChip {
+  border: 1px solid rgba(184, 160, 120, 0.45);
+  background: rgba(255, 255, 255, 0.65);
+  color: #3d3529;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.quickChip:hover {
+  background: #fff;
+  border-color: rgba(184, 160, 120, 0.85);
+  transform: translateY(-1px);
+}
+
+.inner {
+  position: relative;
+  min-height: 0;
+  overflow: visible;
+}
+
+.panelFlex {
+  display: flex;
+  gap: 14px;
+  position: relative;
+  align-items: stretch;
+}
+
+.calendarBlock {
+  flex: 1.15;
+  min-width: 0;
+}
+
+.timeBlock {
+  flex: 0.85;
+  min-width: 112px;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  padding-left: 14px;
+}
+
+.timeBlockLabel {
+  margin: 0 0 6px;
+  font-size: 10px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8a8278;
+}
+
+.monthNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.navBtn {
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  color: #2a2622;
+  padding: 6px 10px;
+  font-size: 1.1rem;
+  line-height: 1;
+  border-radius: 4px;
+  transition: background 0.15s ease;
+}
+
+.navBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 1);
+}
+
+.navBtn:disabled {
+  color: #c4c0ba;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.monthLabel {
+  font-size: 13px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #1a1816;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  text-align: center;
+}
+
+.dayName {
+  color: #7a7268;
+  font-size: 10px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 0 4px;
+}
+
+.dayCell {
+  padding: 6px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #222;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.dayCell.muted {
+  color: #c8c4be;
+}
+
+.dayCell.today {
+  box-shadow: inset 0 0 0 1px rgba(184, 160, 120, 0.65);
+  color: #1a1816;
+}
+
+.dayCell.selected {
+  background: linear-gradient(145deg, #1f1d1b 0%, #0f0e0d 100%);
+  color: #faf8f4;
+  box-shadow: 0 0 0 1px rgba(212, 175, 96, 0.35);
+}
+
+.dayCell.disabled {
+  color: #c8c4be;
+  pointer-events: none;
+}
+
+.dayCell:not(.disabled):not(.muted):hover {
+  background: rgba(30, 28, 26, 0.92);
+  color: #fff;
+}
+
+.timeSection {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.timeCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeColLabel {
+  font-size: 9px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  margin: 0 0 4px;
+  text-align: center;
+  color: #8a8278;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.timeScroll {
+  height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  scrollbar-width: thin;
+  padding: 0 2px 4px 0;
+}
+
+.timeOpt {
+  padding: 6px 4px;
+  border: 1px solid #e4e0d8;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 13px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  background: rgba(255, 255, 255, 0.55);
+  color: #222;
+  transition:
+    background 0.12s ease,
+    border-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.timeOpt:hover:not(.optDisabled) {
+  background: #1f1d1b;
+  color: #faf8f4;
+  border-color: #1f1d1b;
+}
+
+.timeOpt.selected {
+  background: linear-gradient(145deg, #1f1d1b 0%, #0f0e0d 100%);
+  color: #faf8f4;
+  border-color: rgba(212, 175, 96, 0.45);
+  font-weight: 600;
+}
+
+.timeOpt.optDisabled {
+  color: #c8c4be;
+  border-color: #ece8e2;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+
+.calendarView,
+.timeView {
+  width: 100%;
+}
+
+.panelError {
+  margin: 10px 0 0;
+  font-size: 12px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #b45309;
+  line-height: 1.35;
+}
+
+.timeActions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  flex-wrap: wrap;
+}
+
+.btnGhost {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: transparent;
+  color: #4a4540;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  padding: 9px 18px;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btnGhost:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btnPrimary {
+  border: none;
+  background: linear-gradient(145deg, #1f1d1b 0%, #121110 100%);
+  color: #f5f1ea;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 10px 22px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.15s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 520px) {
+  .panelFlex {
+    flex-direction: column;
+  }
+
+  .timeBlock {
+    border-left: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-left: 0;
+    padding-top: 12px;
+    min-width: 0;
+  }
+
+  .timeSection {
+    max-width: 100%;
+  }
+
+  .timeScroll {
+    height: 160px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .trigger {
+    min-height: 44px;
+    padding: 8px 34px 8px 10px;
+  }
+}

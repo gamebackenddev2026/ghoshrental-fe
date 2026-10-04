@@ -1,0 +1,803 @@
+/*
+ * Lease-to-own page styles.
+ * Translated from the Angular `LeaseComponent` / `SearchComponent` SCSS in
+ * dist/ghostrentals/src_app_components_product_product_module_ts.js so the
+ * Next.js page matches https://www.ghostrentals.com/product/lease.
+ */
+
+.page {
+  --gr-gray: #1d1d1d;
+  --gr-gray-light: #d1d1d1;
+  --gr-card-p: #48494b;
+  --gr-border: #d1d1d1;
+  --gr-bg: #ffffff;
+
+  background: var(--gr-bg);
+  color: var(--gr-gray);
+  min-height: 60vh;
+  font-family:
+    'RedHat Regular',
+    'Red Hat Display',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+}
+
+.h1Hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+}
+
+/* Visible page heading — styles live in productSearch.module.css (.pageTitle) */
+/* ---------- Outer container (from `.search-container`) ---------- */
+.searchContainer {
+  position: relative;
+  padding: 12rem 24rem 0;
+}
+@media (max-width: 2048px) {
+  .searchContainer {
+    padding: 12rem 12rem 0;
+  }
+}
+@media (max-width: 1920px) {
+  .searchContainer {
+    padding: 10rem 7rem 0;
+  }
+}
+@media (max-width: 1536px) {
+  .searchContainer {
+    padding: 10rem 5rem 0;
+  }
+}
+@media (max-width: 1366px) {
+  .searchContainer {
+    padding: 10rem 5rem 0;
+  }
+}
+@media (max-width: 1200px) {
+  .searchContainer {
+    padding: 8rem 2rem 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .searchContainer {
+    padding: 5rem 1rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchContainer {
+    padding: 5rem 0.75rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchContainer {
+    padding: 4.5rem 0.5rem 0;
+  }
+}
+
+/* Filters on top, results below */
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---------- Filter top bar ---------- */
+.filterCol {
+  width: 100%;
+}
+.filterColSticky {
+  position: static;
+}
+
+.filterContainer {
+  background: transparent;
+  padding: 0;
+}
+
+/* One toolbar row: pills share width so Reset never wraps alone under them */
+.leaseFilterToolbar {
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.leaseFilterPillsRow {
+  flex: 1 1 0;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.leaseFilterPillsRow > div {
+  flex: 1 1 0;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+@media (max-width: 991px) {
+  .leaseFilterToolbar {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .leaseFilterPillsRow {
+    flex: 1 1 100%;
+    flex-basis: 100%;
+    min-width: 0;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .leaseFilterPillsRow > div {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .leaseFilterPillsRow > button {
+    margin-left: 0;
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+.filterTopDesktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.filterTopMobile {
+  display: none;
+}
+
+.mobileToggleBtn {
+  border: 0;
+  background: transparent;
+  color: var(--gr-gray);
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 8px;
+  cursor: pointer;
+  min-width: 36px;
+}
+
+.filterTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filterIcon {
+  width: 14px;
+  height: 14px;
+  display: block;
+  opacity: 0.3;
+}
+
+.filterTitle {
+  margin: 0;
+  font-size: 11px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.resetBtn {
+  background: transparent;
+  border: 0;
+  padding: 4px 6px;
+  color: #888;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.resetBtn:hover {
+  color: #1d1d1d;
+}
+
+/* Pills row */
+.filterBody {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .filterBody {
+    gap: 6px;
+  }
+}
+
+.filterBodyHidden {
+  display: none !important;
+}
+
+/* Individual pill */
+.filterField {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  padding: 9px 46px 9px 18px;
+  min-height: 54px;
+  min-width: 148px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.filterField:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.filterField:focus-within {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+@media (max-width: 768px) {
+  .filterField {
+    min-width: calc(50% - 3px);
+    flex: 1 1 calc(50% - 3px);
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filterField {
+    min-width: 100%;
+    flex: 1 1 100%;
+    border-radius: 4px;
+  }
+}
+
+/* Tiny uppercase label inside pill */
+.label {
+  display: block;
+  font-size: 11px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #6b6b6b;
+  margin: 0 0 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.dropdownWrap {
+  position: relative;
+}
+
+.dropdownToggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #1d1d1d;
+  text-align: left;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: none;
+  box-sizing: border-box;
+  user-select: none;
+  outline: none;
+}
+.dropdownToggle:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.dropdownToggle:focus,
+.dropdownToggle:focus-visible {
+  outline: none;
+}
+.dropdownPlaceholder .dropdownText {
+  color: #aaaaaa;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 14px;
+}
+.dropdownText {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+/* Arrow — absolute to .filterField */
+.dropdownArrow {
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  width: 11px;
+  height: auto;
+  transform: translateY(-50%);
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 4;
+}
+.filterField:hover .dropdownArrow {
+  opacity: 0.6;
+}
+.dropdownArrowOpen {
+  transform: translateY(-50%) rotate(180deg);
+  opacity: 0.7;
+}
+
+/* Popover-style dropdown */
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.14),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  min-width: 220px;
+  max-height: 260px;
+  overflow-y: auto;
+  z-index: 999;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  color: #333;
+  text-align: left;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.dropdownItem:hover {
+  background: #f7f7f7;
+  color: #0b0b0b;
+}
+.dropdownItemActive {
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #0b0b0b;
+  cursor: default;
+}
+
+/* Price wrapper — Angular .price-wrapper */
+.priceSection {
+  display: block;
+}
+
+.priceWrapper {
+  display: block;
+}
+
+.priceRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.priceLabel {
+  display: block;
+  font-size: 10px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #b4b4b4;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+.priceBox {
+  position: relative;
+}
+
+.formControl {
+  width: 100%;
+  padding: 0 24px 0 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  font-size: 14px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #1d1d1d;
+  outline: none;
+  appearance: none;
+  -moz-appearance: textfield;
+}
+.formControl::placeholder {
+  color: #c0c0c0;
+  font-family: 'RedHat Regular', Arial, sans-serif;
+  font-size: 13px;
+}
+.formControl:focus {
+  outline: none;
+}
+.formControl::-webkit-outer-spin-button,
+.formControl::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.priceCode {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #b4b4b4;
+  pointer-events: none;
+}
+
+/* Dual-thumb range — Angular ngx-slider look (global .ngx-slider) */
+.rangeSlider {
+  position: relative;
+  margin: 42px 4px 4px;
+  height: 28px;
+}
+.rangeTrack {
+  position: relative;
+  height: 24px;
+  margin-top: 8px;
+  user-select: none;
+}
+.rangeRail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: #d1d1d1;
+  border-radius: 4px;
+}
+.rangeFill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: #1d1d1d;
+  border-radius: 4px;
+  pointer-events: none;
+}
+.rangeThumbLabel {
+  position: absolute;
+  top: -32px;
+  font-family: 'RedHat Medium', Arial, sans-serif;
+  font-size: 13px;
+  color: #1d1d1d;
+  white-space: nowrap;
+  pointer-events: none;
+  line-height: 1.4;
+  z-index: 3;
+}
+
+.rangeThumbLabelMin {
+  left: 0;
+  margin-top: 5px;
+}
+
+.rangeThumbLabelMax {
+  right: 0;
+  left: auto;
+  margin-top: 5px;
+}
+
+.rangeThumb {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #1d1d1d;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  box-sizing: border-box;
+  z-index: 2;
+}
+.rangeThumb:hover,
+.rangeThumb:focus-visible {
+  width: 26px;
+  height: 26px;
+}
+
+/* Search button — dark pill, inline with filter pills, pushed right */
+.blackButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+  border: none;
+  outline: none;
+  background: #0b0b0b;
+  color: #fff;
+  border-radius: 999px;
+  padding: 11px 26px;
+  min-height: 54px;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.blackButton:hover,
+.blackButton:focus-visible {
+  background: #222;
+}
+
+.blackButton:active {
+  background: #000;
+}
+
+/* ---------- Results column ---------- */
+.resultsCol {
+  position: relative;
+  min-width: 0;
+}
+
+.sortBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.showing {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gr-card-p);
+}
+.showing span {
+  font-weight: 400;
+  color: var(--gr-card-p);
+}
+
+.arrivingSoon {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gr-card-p);
+  text-transform: capitalize;
+}
+
+.sortWrapper {
+  position: relative;
+}
+
+.sortBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.sortLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gr-card-p);
+  white-space: nowrap;
+}
+
+.sortArrow {
+  width: 14px;
+  height: auto;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.sortArrowOpen {
+  transform: rotate(180deg);
+}
+
+.sortDropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 100;
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 4px 0;
+  margin: 0;
+}
+
+.sortItem {
+  display: block;
+  width: 100%;
+  padding: 12px 18px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gr-card-p);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+
+.sortItem:hover {
+  background: #f5f5f5;
+}
+
+.sortItemActive {
+  font-weight: 700;
+  color: #000;
+}
+
+.state {
+  padding: 18px 0;
+  color: var(--gr-card-p);
+  font-size: 14px;
+}
+
+/* Spacing for lease range slider inside product-search popover */
+.monthlySliderInPopover {
+  margin-top: 12px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 24px;
+  padding: 2px;
+}
+
+.productCol {
+  display: flex;
+  min-width: 0;
+}
+
+/* Lease cards use `homeSections.module.css` (.carCard + .carCardList). Small lease-only helpers: */
+.leaseCardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.thumbPlaceholder {
+  position: absolute;
+  inset: 0;
+  background: #ececec;
+  border-radius: 4px;
+}
+
+.leaseEyebrow {
+  display: block;
+  margin: 0 0 2px;
+  font-size: 0.6875rem;
+  color: #9a9da2;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.leaseDp {
+  display: block;
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #4f5256;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.leaseFeatureList {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(29, 29, 29, 0.08);
+  padding-left: 10px;
+}
+
+.leaseFeatureItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1 1 0;
+}
+
+.leaseFeatureTick {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.leaseFeatureText {
+  margin: 0;
+  font-size: 0.6875rem;
+  line-height: 1.25;
+  font-family: 'RedHat SemiBold', Arial, sans-serif;
+  color: #5c5f63;
+}
+
+/* Pagination: use shared `ResultsPagination` + productSearch.module.css */
+
+/* Small screens: remove drop shadows (cards, filter pills, popovers, sort menu) */
+@media (max-width: 768px) {
+  .products article,
+  .products article:hover {
+    box-shadow: none !important;
+    transform: none;
+  }
+
+  .leaseFilterToolbar [data-dropdown],
+  .leaseFilterToolbar [data-dropdown]:hover,
+  .leaseFilterToolbar [data-dropdown]:focus-within {
+    box-shadow: none !important;
+  }
+
+  .leaseFilterToolbar [data-dropdown] > div:nth-child(n + 2) {
+    box-shadow: none !important;
+  }
+
+  .searchContainer [data-dropdown='sort'] ul {
+    box-shadow: none !important;
+  }
+}
