@@ -42,24 +42,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Large binary/legacy assets (host on CDN instead)
+# Legacy Angular build duplicate (entire directory)
 /public/legacy/
-/public/assets/banner/
-/public/assets/loader-video/
 
-# Angular build artifacts in public root
-/public/vendor.js
-/public/vendor.js.map
-/public/main.js
-/public/main.js.map
-/public/polyfills.js
-/public/polyfills.js.map
-/public/runtime.js
-/public/runtime.js.map
-/public/styles.css
-/public/styles.css.map
-/public/src_app_*.js
-/public/src_app_*.js.map
+# Source maps (not needed in production)
+/public/*.map
+/public/src_app_*.map
 
-# Nested public directory (CMS media served from API)
+# CMS media & banner served via API rewrite (next.config.ts: /public/* → upstream)
 /public/public/
+/public/assets/banner/
